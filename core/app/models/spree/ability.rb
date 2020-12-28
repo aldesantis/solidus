@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 # Implementation class for Cancan gem.  Instead of overriding this class, consider adding new permissions
@@ -35,14 +35,14 @@ module Spree
     end
 
     def initialize(current_user)
-      @user = current_user || Spree.user_class.new
+      @user = current_user || ::Spree.user_class.new
 
       activate_permission_sets
       register_extension_abilities
     end
 
     def can?(action, *args)
-      super(normalize_action(action), *args)
+      super(*T.unsafe([normalize_action(action), *args]))
     end
 
     def model_adapter(model_class, action)
@@ -52,18 +52,18 @@ module Spree
     private
 
     def normalize_action(action)
-      return action unless Spree::Config.use_custom_cancancan_actions
+      return action unless Config.use_custom_cancancan_actions
 
       normalized_action = CUSTOM_ALIASES_MAP.fetch(action, action)
 
       if action == :read
-        Spree::Deprecation.warn <<~WARN, caller(3)
+        Deprecation.warn <<~WARN, caller(3)
           The behavior of CanCanCan `:read` action alias will be changing in Solidus 3.0.
           The current alias is: `:show, :to => :read`,
           the new alias will be compliant with CanCanCan's default: `index, :show, :to => :read`
         WARN
       elsif CUSTOM_ALIASES_MAP.key? action
-        Spree::Deprecation.warn <<~WARN, caller(3)
+        Deprecation.warn <<~WARN, caller(3)
           Calling CanCanCan alias action #{action.inspect} is deprecated.
           In Solidus 3.0 non-standard CanCanCan action aliases will be replaced with default ones,
           please replace with #{normalized_action.inspect}.
@@ -83,7 +83,7 @@ module Spree
     end
 
     def activate_permission_sets
-      Spree::Config.roles.activate_permissions! self, user
+      Config.roles.activate_permissions! self, user
     end
   end
 end
