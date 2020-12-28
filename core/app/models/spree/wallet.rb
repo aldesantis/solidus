@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # Interface for accessing and updating a user's active "wallet". A Wallet

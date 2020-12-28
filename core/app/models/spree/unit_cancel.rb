@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # This represents an inventory unit that has been canceled from an order after it has already been completed

@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 # This class is responsible for saving payment sources in the user's "wallet"

@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class AddLftAndRgtIndexesToTaxons < ActiveRecord::Migration[5.0]

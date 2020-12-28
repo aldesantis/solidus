@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 class AddDiscontinueOnToSpreeProducts < ActiveRecord::Migration[5.2]

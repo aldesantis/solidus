@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # This is the primary location for defining spree preferences

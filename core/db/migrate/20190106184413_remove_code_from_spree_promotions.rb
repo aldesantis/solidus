@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'solidus/migrations/promotions_with_code_handlers'

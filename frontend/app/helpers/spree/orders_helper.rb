@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'truncate_html'

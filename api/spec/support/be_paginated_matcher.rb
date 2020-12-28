@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 RSpec::Matchers.define :be_paginated do

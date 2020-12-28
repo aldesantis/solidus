@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 Spree::ReturnReason.find_or_create_by(name: 'Better price available')

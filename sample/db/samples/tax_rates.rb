@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 north_america = Spree::Zone.find_by!(name: "North America")

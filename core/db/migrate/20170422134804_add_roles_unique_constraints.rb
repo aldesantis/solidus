@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class AddRolesUniqueConstraints < ActiveRecord::Migration[5.0]

@@ -1,3 +1,4 @@
+# typed: strict
 # frozen_string_literal: true
 
 class Spree::ShippingMethodStockLocation < Spree::Base

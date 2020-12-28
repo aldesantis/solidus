@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # This class represents all of the actions one can take to modify an Order after it is complete

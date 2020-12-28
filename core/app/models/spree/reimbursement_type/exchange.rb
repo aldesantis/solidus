@@ -1,3 +1,4 @@
+# typed: true
 # frozen_string_literal: true
 
 class Spree::ReimbursementType::Exchange < Spree::ReimbursementType

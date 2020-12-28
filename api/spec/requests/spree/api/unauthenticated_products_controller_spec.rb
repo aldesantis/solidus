@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'shared_examples/protect_product_actions'

@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'spree/preferences/preferable_class_methods'

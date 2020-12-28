@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 Spree::Deprecation.warn "BarAbility is deprecated. Use stub_authorization! instead"

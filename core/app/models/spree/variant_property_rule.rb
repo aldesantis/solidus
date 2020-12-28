@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # The reason for variant properties not being associated with variants

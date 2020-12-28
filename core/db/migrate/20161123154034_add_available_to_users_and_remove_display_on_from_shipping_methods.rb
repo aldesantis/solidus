@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class AddAvailableToUsersAndRemoveDisplayOnFromShippingMethods < ActiveRecord::Migration[5.0]

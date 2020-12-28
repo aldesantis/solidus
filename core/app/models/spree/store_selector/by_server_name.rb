@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # Default implementation for finding the current store is given an HTTP request

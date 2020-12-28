@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 shared_examples "modifying product actions are restricted" do

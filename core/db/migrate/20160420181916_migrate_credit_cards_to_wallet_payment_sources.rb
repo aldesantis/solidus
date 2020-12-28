@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class MigrateCreditCardsToWalletPaymentSources < ActiveRecord::Migration[4.2]

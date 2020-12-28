@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # Implementation class for Cancan gem.  Instead of overriding this class, consider adding new permissions

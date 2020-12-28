@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 eu_vat = Spree::Zone.find_or_create_by!(name: "EU_VAT", description: "Countries that make up the EU VAT zone.")

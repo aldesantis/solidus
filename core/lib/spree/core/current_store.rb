@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # Default class for deciding what the current store is, given an HTTP request

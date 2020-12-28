@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class RemoveIsDefaultFromPrices < ActiveRecord::Migration[5.0]

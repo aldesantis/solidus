@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 require 'spree/testing_support/factories/calculator_factory'

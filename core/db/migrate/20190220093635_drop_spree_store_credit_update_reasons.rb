@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class DropSpreeStoreCreditUpdateReasons < ActiveRecord::Migration[5.1]

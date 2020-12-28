@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 united_states = Spree::Country.find_by!(iso: "US")

@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 # A service layer that handles generating Carton objects when inventory units

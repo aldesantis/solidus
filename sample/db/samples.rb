@@ -1,3 +1,4 @@
+# typed: strict
 # frozen_string_literal: true
 
 Spree::Sample.load_sample("payment_methods")

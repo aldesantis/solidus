@@ -1,3 +1,4 @@
+# typed: strict
 require 'rubygems'
 gemfile = File.expand_path("<%= gemfile_path %>", __FILE__)
 

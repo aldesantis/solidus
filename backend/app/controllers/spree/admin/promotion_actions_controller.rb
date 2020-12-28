@@ -1,3 +1,4 @@
+# typed: false
 # frozen_string_literal: true
 
 class Spree::Admin::PromotionActionsController < Spree::Admin::BaseController
