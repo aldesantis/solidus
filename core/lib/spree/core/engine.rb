@@ -88,10 +88,23 @@ module Spree
       # manually required.
       if Rails.env.development?
         initializer "spree.mailer_previews" do
-          ActionMailer::Preview.all
-          Dir[root.join("lib/spree/mailer_previews/**/*_preview.rb")].each do |file|
-            require_dependency file
+          mod = Module.new do
+            def self.prepended(base)
+              base.singleton_class.prepend ClassMethods
+            end
+
+            module ClassMethods
+              def load_previews
+                super
+
+                Dir[Spree::Core::Engine.root.join("lib/spree/mailer_previews/**/*_preview.rb")].each do |file|
+                  require_dependency file
+                end
+              end
+            end
           end
+
+          ActionMailer::Preview.prepend(mod)
         end
       end
     end
