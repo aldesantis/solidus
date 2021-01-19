@@ -8,6 +8,17 @@ require 'rspec/core/rake_task'
 require 'solidus_backend'
 require 'spree/testing_support/dummy_app/rake_tasks'
 
+def locate_gem(name)
+  spec = Bundler.load.specs.find{|s| s.name == name }
+  raise GemNotFound, "Could not find gem '#{name}' in the current bundle." unless spec
+  if spec.name == 'bundler'
+    return File.expand_path('../../../', __FILE__)
+  end
+  spec.full_gem_path
+end
+
+Rake.add_rakelib "#{locate_gem('sorbet-rails')}/lib/sorbet-rails/tasks"
+
 RSpec::Core::RakeTask.new
 task default: [:spec, 'spec:js']
 

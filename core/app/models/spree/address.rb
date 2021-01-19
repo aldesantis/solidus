@@ -2,18 +2,18 @@
 # frozen_string_literal: true
 
 module Spree
-  # `Spree::Address` provides the foundational ActiveRecord model for recording and
-  # validating address information for `Spree::Order`, `Spree::Shipment`,
-  # `Spree::UserAddress`, and `Spree::Carton`.
+  # `Address` provides the foundational ActiveRecord model for recording and
+  # validating address information for `Order`, `Shipment`,
+  # `UserAddress`, and `Carton`.
   #
-  class Address < Spree::Base
+  class Address < Base
     extend ActiveModel::ForbiddenAttributesProtection
 
     mattr_accessor :state_validator_class
-    self.state_validator_class = Spree::Address::StateValidator
+    self.state_validator_class = Address::StateValidator
 
-    belongs_to :country, class_name: "Spree::Country", optional: true
-    belongs_to :state, class_name: "Spree::State", optional: true
+    belongs_to :country, class_name: "Country", optional: true
+    belongs_to :state, class_name: "State", optional: true
 
     validates :address1, :city, :country_id, presence: true
     validates :zipcode, presence: true, if: :require_zipcode?
@@ -39,14 +39,14 @@ module Spree
       where(value_attributes(attributes))
     end
 
-    Spree::Deprecation.deprecate_methods(
-      Spree::Address,
+    Deprecation.deprecate_methods(
+      Address,
       LEGACY_NAME_ATTRS.product([:name]).to_h
     )
 
     # @return [Address] an address with default attributes
     def self.build_default(*args, &block)
-      where(country: Spree::Country.default).build(*args, &block)
+      where(country: Country.default).build(*args, &block)
     end
 
     # @return [Address] an equal address already in the database or a newly created one
@@ -76,7 +76,7 @@ module Spree
     def self.value_attributes(base_attributes, merge_attributes = {})
       base = base_attributes.stringify_keys.merge(merge_attributes.stringify_keys)
 
-      name_from_attributes = Spree::Address::Name.from_attributes(base)
+      name_from_attributes = Address::Name.from_attributes(base)
       if base['firstname'].presence || base['first_name'].presence
         base['firstname'] = name_from_attributes.first_name
       end
@@ -116,19 +116,19 @@ module Spree
 
     # @deprecated Do not use this. Use Address.== instead.
     def same_as?(other_address)
-      Spree::Deprecation.warn("Address#same_as? is deprecated. It's equivalent to Address.==", caller)
+      Deprecation.warn("Address#same_as? is deprecated. It's equivalent to Address.==", caller)
       self == other_address
     end
 
     # @deprecated Do not use this. Use Address.== instead.
     def same_as(other_address)
-      Spree::Deprecation.warn("Address#same_as is deprecated. It's equivalent to Address.==", caller)
+      Deprecation.warn("Address#same_as is deprecated. It's equivalent to Address.==", caller)
       self == other_address
     end
 
     # @deprecated Do not use this
     def empty?
-      Spree::Deprecation.warn("Address#empty? is deprecated.", caller)
+      Deprecation.warn("Address#empty? is deprecated.", caller)
       attributes.except('id', 'created_at', 'updated_at', 'country_id').all? { |_, value| value.nil? }
     end
 
@@ -157,7 +157,7 @@ module Spree
     # @return [true] whether or not the address requires a phone number to be
     #   present
     def require_phone?
-      Spree::Config[:address_requires_phone]
+      Config[:address_requires_phone]
     end
 
     # @todo Remove this from the public API if possible.
@@ -177,7 +177,7 @@ module Spree
     # @return [Country] setter that sets self.country to the Country with a matching 2 letter iso
     # @raise [ActiveRecord::RecordNotFound] if country with the iso doesn't exist
     def country_iso=(iso)
-      self.country = Spree::Country.find_by!(iso: iso)
+      self.country = Country.find_by!(iso: iso)
     end
 
     def country_iso
@@ -186,7 +186,7 @@ module Spree
 
     # @return [String] the full name on this address
     def name
-      Spree::Address::Name.new(
+      Address::Name.new(
         read_attribute(:firstname),
         read_attribute(:lastname)
       ).value
@@ -195,13 +195,13 @@ module Spree
     def name=(value)
       return if value.nil?
 
-      name_from_value = Spree::Address::Name.new(value)
+      name_from_value = Address::Name.new(value)
       write_attribute(:firstname, name_from_value.first_name)
       write_attribute(:lastname, name_from_value.last_name)
     end
 
     def as_json(options = {})
-      if Spree::Config.use_combined_first_and_last_name_in_address
+      if Config.use_combined_first_and_last_name_in_address
         super(options.merge(except: LEGACY_NAME_ATTRS)).tap do |hash|
           hash['name'] = name
         end
@@ -215,7 +215,7 @@ module Spree
     def validate_name
       return if name.present?
 
-      name_attribute = if Spree::Config.use_combined_first_and_last_name_in_address
+      name_attribute = if Config.use_combined_first_and_last_name_in_address
         :name
       else
         :firstname

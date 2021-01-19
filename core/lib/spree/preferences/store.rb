@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 # Use singleton class Spree::Preferences::Store.instance to access

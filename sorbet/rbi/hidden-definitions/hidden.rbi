@@ -539,9 +539,6 @@ end
 class ActionDispatch::Session::CacheStore
 end
 
-class ActionDispatch::Session::CookieStore::SessionId
-end
-
 class ActionDispatch::ShowExceptions
   FAILSAFE_RESPONSE = ::T.let(nil, ::T.untyped)
 end
@@ -991,9 +988,6 @@ class ActionView::Template::Inline
   Finalizer = ::T.let(nil, ::T.untyped)
 end
 
-class ActionView::Template::LegacyTemplate
-end
-
 class ActionView::Template::Sources::File
   def initialize(filename); end
 end
@@ -1206,6 +1200,31 @@ class ActiveRecord::AdvisoryLockBase
   include ::ActiveRecord::AdvisoryLockBase::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class ActiveRecord::AdvisoryLockBase::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::ActiveRecord::AdvisoryLockBase::GeneratedRelationMethods
+end
+
+class ActiveRecord::AdvisoryLockBase::ActiveRecord_AssociationRelation
+end
+
+class ActiveRecord::AdvisoryLockBase::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::ActiveRecord::AdvisoryLockBase::GeneratedRelationMethods
+end
+
+class ActiveRecord::AdvisoryLockBase::ActiveRecord_Associations_CollectionProxy
+end
+
+class ActiveRecord::AdvisoryLockBase::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::ActiveRecord::AdvisoryLockBase::GeneratedRelationMethods
+end
+
+class ActiveRecord::AdvisoryLockBase::ActiveRecord_Relation
 end
 
 module ActiveRecord::AdvisoryLockBase::GeneratedAssociationMethods
@@ -1218,6 +1237,13 @@ module ActiveRecord::AdvisoryLockBase::GeneratedAttributeMethods
 end
 
 module ActiveRecord::AdvisoryLockBase::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module ActiveRecord::AdvisoryLockBase::GeneratedRelationMethods
+end
+
+module ActiveRecord::AdvisoryLockBase::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -1450,12 +1476,18 @@ end
 
 class ActiveRecord::Base
   extend ::AwesomeNestedSetOvveride::RelateParent
+  extend ::SorbetRails::CustomFinderMethods
+  extend ::SorbetRails::PluckToTStruct
   extend ::ActionText::Attribute::ClassMethods
   def self.attachment_reflections(); end
 
   def self.attachment_reflections=(val); end
 
   def self.attachment_reflections?(); end
+
+  def self.inherited(child); end
+
+  def self.sbr_old_inherited(kls); end
 end
 
 module ActiveRecord::Batches
@@ -1510,6 +1542,15 @@ module ActiveRecord::ConnectionHandling
   RAILS_ENV = ::T.let(nil, ::T.untyped)
 end
 
+module ActiveRecord::Enum
+  SR_ENUM_KEYWORDS = ::T.let(nil, ::T.untyped)
+end
+
+module ActiveRecord::Enum
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 class ActiveRecord::ExplainRegistry
   def self.collect?(*args, &block); end
 end
@@ -1532,6 +1573,31 @@ class ActiveRecord::InternalMetadata
   include ::ActiveRecord::InternalMetadata::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class ActiveRecord::InternalMetadata::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::ActiveRecord::InternalMetadata::GeneratedRelationMethods
+end
+
+class ActiveRecord::InternalMetadata::ActiveRecord_AssociationRelation
+end
+
+class ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::ActiveRecord::InternalMetadata::GeneratedRelationMethods
+end
+
+class ActiveRecord::InternalMetadata::ActiveRecord_Associations_CollectionProxy
+end
+
+class ActiveRecord::InternalMetadata::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::ActiveRecord::InternalMetadata::GeneratedRelationMethods
+end
+
+class ActiveRecord::InternalMetadata::ActiveRecord_Relation
 end
 
 module ActiveRecord::InternalMetadata::GeneratedAssociationMethods
@@ -1544,6 +1610,13 @@ module ActiveRecord::InternalMetadata::GeneratedAttributeMethods
 end
 
 module ActiveRecord::InternalMetadata::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module ActiveRecord::InternalMetadata::GeneratedRelationMethods
+end
+
+module ActiveRecord::InternalMetadata::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -1705,6 +1778,8 @@ class ActiveRecord::Relation
   include ::ActiveModel::ForbiddenAttributesProtection
   include ::ActiveRecord::SpawnMethods
   include ::ActiveRecord::Calculations
+  include ::SorbetRails::CustomFinderMethods
+  include ::SorbetRails::PluckToTStruct
   CLAUSE_METHODS = ::T.let(nil, ::T.untyped)
   INVALID_METHODS_FOR_DELETE_ALL = ::T.let(nil, ::T.untyped)
   MULTI_VALUE_METHODS = ::T.let(nil, ::T.untyped)
@@ -1720,12 +1795,26 @@ class ActiveRecord::Relation::WhereClause
   ARRAY_WITH_EMPTY_STRING = ::T.let(nil, ::T.untyped)
 end
 
+class ActiveRecord::SchemaMigration
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
 module ActiveRecord::SchemaMigration::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module ActiveRecord::SchemaMigration::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
 class ActiveRecord::Scoping::ScopeRegistry
   VALID_SCOPE_TYPES = ::T.let(nil, ::T.untyped)
+end
+
+class ActiveRecord::Scoping::ScopeRegistry
+  def self.set_value_for(*args, &block); end
+
+  def self.value_for(*args, &block); end
 end
 
 class ActiveRecord::StatementCache
@@ -2078,6 +2167,31 @@ class AddAmountRemainingToStoreCreditEvents::StoreCredit
   def before_remove_for_store_credit_events?(); end
 
   def validate_associated_records_for_store_credit_events(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCredit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedRelationMethods
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCredit::ActiveRecord_AssociationRelation
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCredit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedRelationMethods
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCredit::ActiveRecord_Associations_CollectionProxy
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCredit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedRelationMethods
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCredit::ActiveRecord_Relation
 end
 
 module AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedAssociationMethods
@@ -2097,6 +2211,13 @@ module AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedAttributeMet
 end
 
 module AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedRelationMethods
+end
+
+module AddAmountRemainingToStoreCreditEvents::StoreCredit::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -2135,6 +2256,31 @@ class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
   def autosave_associated_records_for_store_credit(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedRelationMethods
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::ActiveRecord_AssociationRelation
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedRelationMethods
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::ActiveRecord_Associations_CollectionProxy
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedRelationMethods
+end
+
+class AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::ActiveRecord_Relation
 end
 
 module AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedAssociationMethods
@@ -2158,6 +2304,14 @@ module AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedAttribu
 end
 
 module AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedRelationMethods
+  def chronological(*args, &block); end
+end
+
+module AddAmountRemainingToStoreCreditEvents::StoreCreditEvent::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -3862,6 +4016,31 @@ class CreateSpreeStoreCreditReasonsTable::StoreCreditReason
   include ::CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditReason::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedRelationMethods
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditReason::ActiveRecord_AssociationRelation
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditReason::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedRelationMethods
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditReason::ActiveRecord_Associations_CollectionProxy
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditReason::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedRelationMethods
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditReason::ActiveRecord_Relation
 end
 
 module CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedAssociationMethods
@@ -3877,6 +4056,13 @@ module CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedAttribute
   extend ::Mutex_m
 end
 
+module CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedRelationMethods
+end
+
+module CreateSpreeStoreCreditReasonsTable::StoreCreditReason::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class CreateSpreeStoreCreditReasonsTable::StoreCreditReason
   extend ::Kaminari::ConfigurationMethods::ClassMethods
   def self.page(num=T.unsafe(nil)); end
@@ -3887,6 +4073,31 @@ class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason
   include ::CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedRelationMethods
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::ActiveRecord_AssociationRelation
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedRelationMethods
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::ActiveRecord_Associations_CollectionProxy
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedRelationMethods
+end
+
+class CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::ActiveRecord_Relation
 end
 
 module CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedAssociationMethods
@@ -3899,6 +4110,13 @@ module CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedAtt
 end
 
 module CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedRelationMethods
+end
+
+module CreateSpreeStoreCreditReasonsTable::StoreCreditUpdateReason::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -4877,6 +5095,8 @@ end
 class File
   def self.exists?(_); end
 
+  def self.open!(file, *args, &block); end
+
   def self.read_binary(file); end
 
   def self.relative_path(from, to); end
@@ -5047,7 +5267,15 @@ module FriendlyId::SimpleI18n
   def self.setup(model_class); end
 end
 
+class FriendlyId::Slug
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
 module FriendlyId::Slug::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module FriendlyId::Slug::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -5312,6 +5540,16 @@ module Gem
   def self.default_gems_use_full_paths?(); end
 
   def self.remove_unresolved_default_spec(spec); end
+end
+
+module GeneratedUrlHelpers
+  def spree_path(*args); end
+
+  def spree_url(*args); end
+
+  def teaspoon_path(*args); end
+
+  def teaspoon_url(*args); end
 end
 
 module GeneratorSpec::TestCase
@@ -5870,6 +6108,17 @@ class IPAddr
   def ==(other); end
 
   def initialize(addr=T.unsafe(nil), family=T.unsafe(nil)); end
+end
+
+module ITypeAssert
+  Elem = type_member(:out)
+end
+
+module ITypeAssert
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 module ImageProcessing
@@ -6509,9 +6758,6 @@ end
 class Mail::POP3
 end
 
-class Mail::PartsList
-end
-
 class Mail::PhraseList
   def initialize(string); end
 
@@ -6952,6 +7198,31 @@ class MigrateCreditCardsToWalletPaymentSources::CreditCard
   include ::MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class MigrateCreditCardsToWalletPaymentSources::CreditCard::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedRelationMethods
+end
+
+class MigrateCreditCardsToWalletPaymentSources::CreditCard::ActiveRecord_AssociationRelation
+end
+
+class MigrateCreditCardsToWalletPaymentSources::CreditCard::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedRelationMethods
+end
+
+class MigrateCreditCardsToWalletPaymentSources::CreditCard::ActiveRecord_Associations_CollectionProxy
+end
+
+class MigrateCreditCardsToWalletPaymentSources::CreditCard::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedRelationMethods
+end
+
+class MigrateCreditCardsToWalletPaymentSources::CreditCard::ActiveRecord_Relation
 end
 
 module MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedAssociationMethods
@@ -6967,6 +7238,13 @@ module MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedAttributeM
   extend ::Mutex_m
 end
 
+module MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedRelationMethods
+end
+
+module MigrateCreditCardsToWalletPaymentSources::CreditCard::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class MigrateCreditCardsToWalletPaymentSources::CreditCard
   extend ::Kaminari::ConfigurationMethods::ClassMethods
   def self.page(num=T.unsafe(nil)); end
@@ -6977,6 +7255,31 @@ class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource
   include ::MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedRelationMethods
+end
+
+class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::ActiveRecord_AssociationRelation
+end
+
+class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedRelationMethods
+end
+
+class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::ActiveRecord_Associations_CollectionProxy
+end
+
+class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedRelationMethods
+end
+
+class MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::ActiveRecord_Relation
 end
 
 module MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedAssociationMethods
@@ -6989,6 +7292,13 @@ module MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedA
 end
 
 module MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedRelationMethods
+end
+
+module MigrateCreditCardsToWalletPaymentSources::WalletPaymentSource::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -7780,12 +8090,117 @@ class Parallel::UserInterruptHandler
   INTERRUPT_SIGNAL = ::T.let(nil, ::T.untyped)
 end
 
+class Parlour::ConflictResolver
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::Conversion::Converter
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module Parlour::Debugging::Tree
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module Parlour::Debugging
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::Generator
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::Options
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::ParseError
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::Plugin
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::RbiGenerator::Parameter
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::RbiGenerator::StructProp
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::RbsGenerator::Block
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::RbsGenerator::MethodSignature
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::RbsGenerator::Parameter
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module Parlour::TypeLoader
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::TypeParser::NodePath
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::TypeParser
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::TypedObject
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::Types::Proc::Parameter
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class Parlour::Types::Type
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
 ParseError = Racc::ParseError
 
 module Parser
   MESSAGES = ::T.let(nil, ::T.untyped)
   VERSION = ::T.let(nil, ::T.untyped)
 end
+
+Parser::CurrentRuby = Parser::Ruby26
 
 class Parser::Diagnostic
   LEVELS = ::T.let(nil, ::T.untyped)
@@ -7819,6 +8234,12 @@ class Parser::Rewriter
 end
 
 class Parser::Ruby24
+  Racc_arg = ::T.let(nil, ::T.untyped)
+  Racc_debug_parser = ::T.let(nil, ::T.untyped)
+  Racc_token_to_s_table = ::T.let(nil, ::T.untyped)
+end
+
+class Parser::Ruby26
   Racc_arg = ::T.let(nil, ::T.untyped)
   Racc_debug_parser = ::T.let(nil, ::T.untyped)
   Racc_token_to_s_table = ::T.let(nil, ::T.untyped)
@@ -7862,6 +8283,10 @@ Polyamorous::JoinAssociation = ActiveRecord::Associations::JoinDependency::JoinA
 Polyamorous::JoinDependency = ActiveRecord::Associations::JoinDependency
 
 Polyamorous::OuterJoin = Arel::Nodes::OuterJoin
+
+module Polyfill
+  VERSION = ::T.let(nil, ::T.untyped)
+end
 
 class Proc
   def <<(_); end
@@ -8568,10 +8993,6 @@ class RSpec::Mocks::AnyInstance::PositiveExpectationChain
   ExpectationInvocationOrder = ::T.let(nil, ::T.untyped)
 end
 
-class RSpec::Mocks::AnyInstance::Recorder
-  include ::T::CompatibilityPatches::RSpecCompatibility::RecorderExtensions
-end
-
 class RSpec::Mocks::AnyInstance::StubChain
   EmptyInvocationOrder = ::T.let(nil, ::T.untyped)
   InvocationOrder = ::T.let(nil, ::T.untyped)
@@ -8585,10 +9006,6 @@ class RSpec::Mocks::Matchers::HaveReceived
   ARGS_CONSTRAINTS = ::T.let(nil, ::T.untyped)
   CONSTRAINTS = ::T.let(nil, ::T.untyped)
   COUNT_CONSTRAINTS = ::T.let(nil, ::T.untyped)
-end
-
-class RSpec::Mocks::MethodDouble
-  include ::T::CompatibilityPatches::RSpecCompatibility::MethodDoubleExtensions
 end
 
 class RSpec::Mocks::ObjectReference
@@ -9007,9 +9424,6 @@ end
 
 class Rack::Session::Abstract::SessionHash
   Unspecified = ::T.let(nil, ::T.untyped)
-end
-
-class Rack::Session::Cookie::SessionId
 end
 
 class Rack::Session::Pool
@@ -9542,6 +9956,31 @@ class RemoveCodeFromSpreePromotions::Promotion
   include ::RemoveCodeFromSpreePromotions::Promotion::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class RemoveCodeFromSpreePromotions::Promotion::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveCodeFromSpreePromotions::Promotion::GeneratedRelationMethods
+end
+
+class RemoveCodeFromSpreePromotions::Promotion::ActiveRecord_AssociationRelation
+end
+
+class RemoveCodeFromSpreePromotions::Promotion::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveCodeFromSpreePromotions::Promotion::GeneratedRelationMethods
+end
+
+class RemoveCodeFromSpreePromotions::Promotion::ActiveRecord_Associations_CollectionProxy
+end
+
+class RemoveCodeFromSpreePromotions::Promotion::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveCodeFromSpreePromotions::Promotion::GeneratedRelationMethods
+end
+
+class RemoveCodeFromSpreePromotions::Promotion::ActiveRecord_Relation
 end
 
 module RemoveCodeFromSpreePromotions::Promotion::GeneratedAssociationMethods
@@ -9557,6 +9996,13 @@ module RemoveCodeFromSpreePromotions::Promotion::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module RemoveCodeFromSpreePromotions::Promotion::GeneratedRelationMethods
+end
+
+module RemoveCodeFromSpreePromotions::Promotion::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class RemoveCodeFromSpreePromotions::Promotion
   extend ::Kaminari::ConfigurationMethods::ClassMethods
   def self.page(num=T.unsafe(nil)); end
@@ -9568,6 +10014,31 @@ class RemoveOrderIdFromInventoryUnits::InventoryUnit
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
   def autosave_associated_records_for_shipment(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class RemoveOrderIdFromInventoryUnits::InventoryUnit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedRelationMethods
+end
+
+class RemoveOrderIdFromInventoryUnits::InventoryUnit::ActiveRecord_AssociationRelation
+end
+
+class RemoveOrderIdFromInventoryUnits::InventoryUnit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedRelationMethods
+end
+
+class RemoveOrderIdFromInventoryUnits::InventoryUnit::ActiveRecord_Associations_CollectionProxy
+end
+
+class RemoveOrderIdFromInventoryUnits::InventoryUnit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedRelationMethods
+end
+
+class RemoveOrderIdFromInventoryUnits::InventoryUnit::ActiveRecord_Relation
 end
 
 module RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedAssociationMethods
@@ -9591,6 +10062,13 @@ module RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedAttributeMethods
 end
 
 module RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedRelationMethods
+end
+
+module RemoveOrderIdFromInventoryUnits::InventoryUnit::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -9631,6 +10109,31 @@ class RemoveOrderIdFromInventoryUnits::Shipment
   def before_remove_for_inventory_units?(); end
 
   def validate_associated_records_for_inventory_units(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class RemoveOrderIdFromInventoryUnits::Shipment::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveOrderIdFromInventoryUnits::Shipment::GeneratedRelationMethods
+end
+
+class RemoveOrderIdFromInventoryUnits::Shipment::ActiveRecord_AssociationRelation
+end
+
+class RemoveOrderIdFromInventoryUnits::Shipment::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveOrderIdFromInventoryUnits::Shipment::GeneratedRelationMethods
+end
+
+class RemoveOrderIdFromInventoryUnits::Shipment::ActiveRecord_Associations_CollectionProxy
+end
+
+class RemoveOrderIdFromInventoryUnits::Shipment::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::RemoveOrderIdFromInventoryUnits::Shipment::GeneratedRelationMethods
+end
+
+class RemoveOrderIdFromInventoryUnits::Shipment::ActiveRecord_Relation
 end
 
 module RemoveOrderIdFromInventoryUnits::Shipment::GeneratedAssociationMethods
@@ -9650,6 +10153,13 @@ module RemoveOrderIdFromInventoryUnits::Shipment::GeneratedAttributeMethods
 end
 
 module RemoveOrderIdFromInventoryUnits::Shipment::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module RemoveOrderIdFromInventoryUnits::Shipment::GeneratedRelationMethods
+end
+
+module RemoveOrderIdFromInventoryUnits::Shipment::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -12980,6 +13490,31 @@ end
 class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode
   include ::Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedAttributeMethods
   include ::Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedRelationMethods
+end
+
+class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::ActiveRecord_AssociationRelation
+end
+
+class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedRelationMethods
+end
+
+class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::ActiveRecord_Associations_CollectionProxy
+end
+
+class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedRelationMethods
+end
+
+class Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::ActiveRecord_Relation
 end
 
 module Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedAssociationMethods
@@ -12993,6 +13528,82 @@ end
 
 module Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedAttributeMethods
   extend ::Mutex_m
+end
+
+module Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedRelationMethods
+end
+
+module Solidus::Migrations::PromotionWithCodeHandlers::PromotionCode::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class SorbetRails::Config
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+SorbetRails::JobRbiFormatter::Parameter = Parlour::RbiGenerator::Parameter
+
+class SorbetRails::JobRbiFormatter
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+SorbetRails::MailerRbiFormatter::Parameter = Parlour::RbiGenerator::Parameter
+
+class SorbetRails::MailerRbiFormatter
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class SorbetRails::ModelColumnUtils::ColumnType
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module SorbetRails::ModelColumnUtils
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+SorbetRails::ModelPlugins::Base::Parameter = Parlour::RbiGenerator::Parameter
+
+module SorbetRails::ModelPlugins
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class SorbetRails::ModelRbiFormatter
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module SorbetRails::ModelUtils
+  extend ::T::Private::Abstract::Hooks
+  extend ::T::InterfaceWrapper::Helpers
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module SorbetRails::PluckToTStruct
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module SorbetRails::SorbetUtils
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module SorbetRails::Utils
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+module SorbetRails
+  extend ::T::Private::Methods::SingletonMethodHooks
 end
 
 class SortedSet
@@ -13138,6 +13749,31 @@ class Spree::Address
   def will_save_change_to_full_name?(*args); end
 
   def will_save_change_to_last_name?(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Address::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Address::GeneratedRelationMethods
+end
+
+class Spree::Address::ActiveRecord_AssociationRelation
+end
+
+class Spree::Address::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Address::GeneratedRelationMethods
+end
+
+class Spree::Address::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Address::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Address::GeneratedRelationMethods
+end
+
+class Spree::Address::ActiveRecord_Relation
 end
 
 module Spree::Address::GeneratedAssociationMethods
@@ -13176,6 +13812,14 @@ module Spree::Address::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Address::GeneratedRelationMethods
+  def with_values(*args, &block); end
+end
+
+module Spree::Address::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Address
   def self.with_values(*args); end
 end
@@ -13194,6 +13838,31 @@ class Spree::Adjustment
   def autosave_associated_records_for_source(*args); end
 
   def display_amount(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Adjustment::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Adjustment::GeneratedRelationMethods
+end
+
+class Spree::Adjustment::ActiveRecord_AssociationRelation
+end
+
+class Spree::Adjustment::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Adjustment::GeneratedRelationMethods
+end
+
+class Spree::Adjustment::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Adjustment::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Adjustment::GeneratedRelationMethods
+end
+
+class Spree::Adjustment::ActiveRecord_Relation
 end
 
 module Spree::Adjustment::GeneratedAssociationMethods
@@ -13253,6 +13922,44 @@ module Spree::Adjustment::GeneratedAttributeMethods
 end
 
 module Spree::Adjustment::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Adjustment::GeneratedRelationMethods
+  def additional(*args, &block); end
+
+  def cancellation(*args, &block); end
+
+  def charge(*args, &block); end
+
+  def credit(*args, &block); end
+
+  def eligible(*args, &block); end
+
+  def finalized(*args, &block); end
+
+  def is_included(*args, &block); end
+
+  def non_promotion(*args, &block); end
+
+  def non_tax(*args, &block); end
+
+  def nonzero(*args, &block); end
+
+  def not_finalized(*args, &block); end
+
+  def price(*args, &block); end
+
+  def promotion(*args, &block); end
+
+  def return_authorization(*args, &block); end
+
+  def shipping(*args, &block); end
+
+  def tax(*args, &block); end
+end
+
+module Spree::Adjustment::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -13320,6 +14027,31 @@ class Spree::AdjustmentReason
   def before_remove_for_adjustments?(); end
 
   def validate_associated_records_for_adjustments(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::AdjustmentReason::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::AdjustmentReason::GeneratedRelationMethods
+end
+
+class Spree::AdjustmentReason::ActiveRecord_AssociationRelation
+end
+
+class Spree::AdjustmentReason::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::AdjustmentReason::GeneratedRelationMethods
+end
+
+class Spree::AdjustmentReason::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::AdjustmentReason::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::AdjustmentReason::GeneratedRelationMethods
+end
+
+class Spree::AdjustmentReason::ActiveRecord_Relation
 end
 
 module Spree::AdjustmentReason::GeneratedAssociationMethods
@@ -13339,6 +14071,14 @@ module Spree::AdjustmentReason::GeneratedAttributeMethods
 end
 
 module Spree::AdjustmentReason::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::AdjustmentReason::GeneratedRelationMethods
+  def active(*args, &block); end
+end
+
+module Spree::AdjustmentReason::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -13368,63 +14108,6 @@ class Spree::AdjustmentReason
   def self.before_remove_for_adjustments=(val); end
 
   def self.before_remove_for_adjustments?(); end
-end
-
-class Spree::Admin::BaseController
-end
-
-class Spree::Admin::CancellationsController
-end
-
-class Spree::Admin::GeneralSettingsController
-end
-
-class Spree::Admin::LocaleController
-end
-
-class Spree::Admin::LogEntriesController
-end
-
-class Spree::Admin::OptionValuesController
-end
-
-class Spree::Admin::Orders::CustomerDetailsController
-end
-
-class Spree::Admin::OrdersController
-end
-
-class Spree::Admin::PaymentsController
-end
-
-class Spree::Admin::PromotionCodesController
-end
-
-class Spree::Admin::RootController
-end
-
-class Spree::Admin::SearchController
-end
-
-class Spree::Admin::StoresController
-end
-
-class Spree::Admin::StyleGuideController
-end
-
-class Spree::Admin::Taxons::AttachmentController
-end
-
-class Spree::Admin::TaxonsController
-end
-
-class Spree::Admin::Users::ApiKeyController
-end
-
-class Spree::Api::AddressBooksController
-end
-
-class Spree::Api::AddressesController
 end
 
 module Spree::Api::ApiHelpers
@@ -13558,39 +14241,6 @@ class Spree::Api::CheckoutsController
   include ::Spree::Core::ControllerHelpers::PaymentParameters
 end
 
-class Spree::Api::ClassificationsController
-end
-
-class Spree::Api::ConfigController
-end
-
-class Spree::Api::CountriesController
-end
-
-class Spree::Api::CouponCodesController
-end
-
-class Spree::Api::CreditCardsController
-end
-
-class Spree::Api::CustomerReturnsController
-end
-
-class Spree::Api::ImagesController
-end
-
-class Spree::Api::InventoryUnitsController
-end
-
-class Spree::Api::LineItemsController
-end
-
-class Spree::Api::OptionTypesController
-end
-
-class Spree::Api::OptionValuesController
-end
-
 class Spree::Api::OrdersController
   def address(); end
 
@@ -13599,54 +14249,6 @@ class Spree::Api::OrdersController
   def delivery(); end
 
   def payment(); end
-end
-
-class Spree::Api::PaymentsController
-end
-
-class Spree::Api::ProductPropertiesController
-end
-
-class Spree::Api::ProductsController
-end
-
-class Spree::Api::PromotionsController
-end
-
-class Spree::Api::PropertiesController
-end
-
-class Spree::Api::ReturnAuthorizationsController
-end
-
-class Spree::Api::ShipmentsController
-end
-
-class Spree::Api::StatesController
-end
-
-class Spree::Api::StockItemsController
-end
-
-class Spree::Api::StockLocationsController
-end
-
-class Spree::Api::StockMovementsController
-end
-
-class Spree::Api::StoresController
-end
-
-class Spree::Api::TaxonomiesController
-end
-
-class Spree::Api::TaxonsController
-end
-
-class Spree::Api::VariantsController
-end
-
-class Spree::Api::ZonesController
 end
 
 class Spree::ApiConfiguration
@@ -14533,6 +15135,31 @@ class Spree::Asset
   def scope_name(); end
 
   def touch_record_sql(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Asset::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Asset::GeneratedRelationMethods
+end
+
+class Spree::Asset::ActiveRecord_AssociationRelation
+end
+
+class Spree::Asset::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Asset::GeneratedRelationMethods
+end
+
+class Spree::Asset::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Asset::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Asset::GeneratedRelationMethods
+end
+
+class Spree::Asset::ActiveRecord_Relation
 end
 
 module Spree::Asset::GeneratedAssociationMethods
@@ -14550,6 +15177,14 @@ module Spree::Asset::GeneratedAttributeMethods
 end
 
 module Spree::Asset::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Asset::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::Asset::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -14624,6 +15259,7 @@ class Spree::Base
   def whitelisted_ransackable_attributes=(val); end
 
   def whitelisted_ransackable_attributes?(); end
+  RelationType = ::T.let(nil, ::T.untyped)
 end
 
 module Spree::Base::GeneratedAssociationMethods
@@ -14686,6 +15322,34 @@ end
 class Spree::BillingIntegration
   include ::Spree::BillingIntegration::GeneratedAttributeMethods
   include ::Spree::BillingIntegration::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::BillingIntegration::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::BillingIntegration::GeneratedRelationMethods
+end
+
+class Spree::BillingIntegration::ActiveRecord_AssociationRelation
+end
+
+class Spree::BillingIntegration::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::BillingIntegration::GeneratedRelationMethods
+end
+
+class Spree::BillingIntegration::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::BillingIntegration::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::BillingIntegration::GeneratedRelationMethods
+end
+
+class Spree::BillingIntegration::ActiveRecord_Relation
 end
 
 module Spree::BillingIntegration::GeneratedAssociationMethods
@@ -14701,6 +15365,13 @@ module Spree::BillingIntegration::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::BillingIntegration::GeneratedRelationMethods
+end
+
+module Spree::BillingIntegration::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 module Spree::CalculatedAdjustments::ClassMethods
   def calculators(); end
 end
@@ -14712,12 +15383,65 @@ class Spree::Calculator
   include ::Spree::Calculator::GeneratedAttributeMethods
   include ::Spree::Calculator::GeneratedAssociationMethods
   def autosave_associated_records_for_calculable(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+end
+
+class Spree::Calculator::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+end
+
+class Spree::Calculator::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+end
+
+class Spree::Calculator::ActiveRecord_Relation
 end
 
 class Spree::Calculator::DefaultTax
   include ::Spree::Calculator::DefaultTax::GeneratedAttributeMethods
   include ::Spree::Calculator::DefaultTax::GeneratedAssociationMethods
   include ::Spree::Tax::TaxHelpers
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::DefaultTax::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::DefaultTax::GeneratedRelationMethods
+end
+
+class Spree::Calculator::DefaultTax::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::DefaultTax::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::DefaultTax::GeneratedRelationMethods
+end
+
+class Spree::Calculator::DefaultTax::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::DefaultTax::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::DefaultTax::GeneratedRelationMethods
+end
+
+class Spree::Calculator::DefaultTax::ActiveRecord_Relation
 end
 
 module Spree::Calculator::DefaultTax::GeneratedAssociationMethods
@@ -14730,6 +15454,13 @@ module Spree::Calculator::DefaultTax::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::DefaultTax::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::DefaultTax::GeneratedRelationMethods
+end
+
+module Spree::Calculator::DefaultTax::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -14751,6 +15482,34 @@ class Spree::Calculator::DistributedAmount
   def preferred_currency_default(); end
 
   def preferred_currency_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::DistributedAmount::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::DistributedAmount::GeneratedRelationMethods
+end
+
+class Spree::Calculator::DistributedAmount::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::DistributedAmount::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::DistributedAmount::GeneratedRelationMethods
+end
+
+class Spree::Calculator::DistributedAmount::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::DistributedAmount::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::DistributedAmount::GeneratedRelationMethods
+end
+
+class Spree::Calculator::DistributedAmount::ActiveRecord_Relation
 end
 
 module Spree::Calculator::DistributedAmount::GeneratedAssociationMethods
@@ -14766,6 +15525,13 @@ module Spree::Calculator::DistributedAmount::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Calculator::DistributedAmount::GeneratedRelationMethods
+end
+
+module Spree::Calculator::DistributedAmount::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Calculator::FlatPercentItemTotal
   include ::Spree::Calculator::FlatPercentItemTotal::GeneratedAttributeMethods
   include ::Spree::Calculator::FlatPercentItemTotal::GeneratedAssociationMethods
@@ -14776,6 +15542,34 @@ class Spree::Calculator::FlatPercentItemTotal
   def preferred_flat_percent_default(); end
 
   def preferred_flat_percent_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::FlatPercentItemTotal::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlatPercentItemTotal::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::FlatPercentItemTotal::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlatPercentItemTotal::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::FlatPercentItemTotal::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlatPercentItemTotal::ActiveRecord_Relation
 end
 
 module Spree::Calculator::FlatPercentItemTotal::GeneratedAssociationMethods
@@ -14788,6 +15582,13 @@ module Spree::Calculator::FlatPercentItemTotal::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::FlatPercentItemTotal::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+module Spree::Calculator::FlatPercentItemTotal::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -14809,6 +15610,34 @@ class Spree::Calculator::FlatRate
   def preferred_currency_default(); end
 
   def preferred_currency_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::FlatRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlatRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::FlatRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlatRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::FlatRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlatRate::ActiveRecord_Relation
 end
 
 module Spree::Calculator::FlatRate::GeneratedAssociationMethods
@@ -14821,6 +15650,13 @@ module Spree::Calculator::FlatRate::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::FlatRate::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::FlatRate::GeneratedRelationMethods
+end
+
+module Spree::Calculator::FlatRate::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -14858,6 +15694,34 @@ class Spree::Calculator::FlexiRate
   def preferred_max_items_default(); end
 
   def preferred_max_items_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::FlexiRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlexiRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlexiRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::FlexiRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlexiRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlexiRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::FlexiRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FlexiRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FlexiRate::ActiveRecord_Relation
 end
 
 module Spree::Calculator::FlexiRate::GeneratedAssociationMethods
@@ -14873,9 +15737,44 @@ module Spree::Calculator::FlexiRate::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Calculator::FlexiRate::GeneratedRelationMethods
+end
+
+module Spree::Calculator::FlexiRate::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Calculator::FreeShipping
   include ::Spree::Calculator::FreeShipping::GeneratedAttributeMethods
   include ::Spree::Calculator::FreeShipping::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::FreeShipping::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FreeShipping::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FreeShipping::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::FreeShipping::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FreeShipping::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FreeShipping::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::FreeShipping::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::FreeShipping::GeneratedRelationMethods
+end
+
+class Spree::Calculator::FreeShipping::ActiveRecord_Relation
 end
 
 module Spree::Calculator::FreeShipping::GeneratedAssociationMethods
@@ -14888,6 +15787,13 @@ module Spree::Calculator::FreeShipping::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::FreeShipping::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::FreeShipping::GeneratedRelationMethods
+end
+
+module Spree::Calculator::FreeShipping::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -14909,6 +15815,13 @@ module Spree::Calculator::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Calculator::GeneratedRelationMethods
+end
+
+module Spree::Calculator::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Calculator::PercentOnLineItem
   include ::Spree::Calculator::PercentOnLineItem::GeneratedAttributeMethods
   include ::Spree::Calculator::PercentOnLineItem::GeneratedAssociationMethods
@@ -14919,6 +15832,34 @@ class Spree::Calculator::PercentOnLineItem
   def preferred_percent_default(); end
 
   def preferred_percent_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::PercentOnLineItem::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PercentOnLineItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PercentOnLineItem::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::PercentOnLineItem::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PercentOnLineItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PercentOnLineItem::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::PercentOnLineItem::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PercentOnLineItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PercentOnLineItem::ActiveRecord_Relation
 end
 
 module Spree::Calculator::PercentOnLineItem::GeneratedAssociationMethods
@@ -14934,6 +15875,13 @@ module Spree::Calculator::PercentOnLineItem::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Calculator::PercentOnLineItem::GeneratedRelationMethods
+end
+
+module Spree::Calculator::PercentOnLineItem::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Calculator::PercentPerItem
   include ::Spree::Calculator::PercentPerItem::GeneratedAttributeMethods
   include ::Spree::Calculator::PercentPerItem::GeneratedAssociationMethods
@@ -14944,6 +15892,34 @@ class Spree::Calculator::PercentPerItem
   def preferred_percent_default(); end
 
   def preferred_percent_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::PercentPerItem::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PercentPerItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PercentPerItem::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::PercentPerItem::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PercentPerItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PercentPerItem::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::PercentPerItem::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PercentPerItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PercentPerItem::ActiveRecord_Relation
 end
 
 module Spree::Calculator::PercentPerItem::GeneratedAssociationMethods
@@ -14956,6 +15932,13 @@ module Spree::Calculator::PercentPerItem::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::PercentPerItem::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::PercentPerItem::GeneratedRelationMethods
+end
+
+module Spree::Calculator::PercentPerItem::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -14993,6 +15976,34 @@ class Spree::Calculator::PriceSack
   def preferred_normal_amount_default(); end
 
   def preferred_normal_amount_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::PriceSack::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PriceSack::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PriceSack::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::PriceSack::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PriceSack::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PriceSack::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::PriceSack::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::PriceSack::GeneratedRelationMethods
+end
+
+class Spree::Calculator::PriceSack::ActiveRecord_Relation
 end
 
 module Spree::Calculator::PriceSack::GeneratedAssociationMethods
@@ -15008,9 +16019,47 @@ module Spree::Calculator::PriceSack::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Calculator::PriceSack::GeneratedRelationMethods
+end
+
+module Spree::Calculator::PriceSack::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Calculator::Returns::DefaultRefundAmount
   include ::Spree::Calculator::Returns::DefaultRefundAmount::GeneratedAttributeMethods
   include ::Spree::Calculator::Returns::DefaultRefundAmount::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::Returns::DefaultRefundAmount::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ReturnsCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Returns::DefaultRefundAmount::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Returns::DefaultRefundAmount::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::Returns::DefaultRefundAmount::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ReturnsCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Returns::DefaultRefundAmount::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Returns::DefaultRefundAmount::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::Returns::DefaultRefundAmount::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ReturnsCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Returns::DefaultRefundAmount::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Returns::DefaultRefundAmount::ActiveRecord_Relation
 end
 
 module Spree::Calculator::Returns::DefaultRefundAmount::GeneratedAssociationMethods
@@ -15023,6 +16072,13 @@ module Spree::Calculator::Returns::DefaultRefundAmount::GeneratedAttributeMethod
 end
 
 module Spree::Calculator::Returns::DefaultRefundAmount::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::Returns::DefaultRefundAmount::GeneratedRelationMethods
+end
+
+module Spree::Calculator::Returns::DefaultRefundAmount::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15036,6 +16092,37 @@ class Spree::Calculator::Shipping::FlatPercentItemTotal
   def preferred_flat_percent_default(); end
 
   def preferred_flat_percent_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::Shipping::FlatPercentItemTotal::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlatPercentItemTotal::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::Shipping::FlatPercentItemTotal::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlatPercentItemTotal::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::Shipping::FlatPercentItemTotal::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlatPercentItemTotal::ActiveRecord_Relation
 end
 
 module Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedAssociationMethods
@@ -15048,6 +16135,13 @@ module Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedAttributeMeth
 end
 
 module Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedRelationMethods
+end
+
+module Spree::Calculator::Shipping::FlatPercentItemTotal::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15069,6 +16163,37 @@ class Spree::Calculator::Shipping::FlatRate
   def preferred_currency_default(); end
 
   def preferred_currency_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::Shipping::FlatRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlatRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::Shipping::FlatRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlatRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::Shipping::FlatRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlatRate::ActiveRecord_Relation
 end
 
 module Spree::Calculator::Shipping::FlatRate::GeneratedAssociationMethods
@@ -15081,6 +16206,13 @@ module Spree::Calculator::Shipping::FlatRate::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::Shipping::FlatRate::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::Shipping::FlatRate::GeneratedRelationMethods
+end
+
+module Spree::Calculator::Shipping::FlatRate::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15118,6 +16250,37 @@ class Spree::Calculator::Shipping::FlexiRate
   def preferred_max_items_default(); end
 
   def preferred_max_items_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::Shipping::FlexiRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlexiRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlexiRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::Shipping::FlexiRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlexiRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlexiRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::Shipping::FlexiRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::FlexiRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::FlexiRate::ActiveRecord_Relation
 end
 
 module Spree::Calculator::Shipping::FlexiRate::GeneratedAssociationMethods
@@ -15130,6 +16293,13 @@ module Spree::Calculator::Shipping::FlexiRate::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::Shipping::FlexiRate::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::Shipping::FlexiRate::GeneratedRelationMethods
+end
+
+module Spree::Calculator::Shipping::FlexiRate::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15151,6 +16321,37 @@ class Spree::Calculator::Shipping::PerItem
   def preferred_currency_default(); end
 
   def preferred_currency_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::Shipping::PerItem::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::PerItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::PerItem::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::Shipping::PerItem::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::PerItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::PerItem::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::Shipping::PerItem::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::PerItem::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::PerItem::ActiveRecord_Relation
 end
 
 module Spree::Calculator::Shipping::PerItem::GeneratedAssociationMethods
@@ -15163,6 +16364,13 @@ module Spree::Calculator::Shipping::PerItem::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::Shipping::PerItem::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::Shipping::PerItem::GeneratedRelationMethods
+end
+
+module Spree::Calculator::Shipping::PerItem::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15200,6 +16408,37 @@ class Spree::Calculator::Shipping::PriceSack
   def preferred_normal_amount_default(); end
 
   def preferred_normal_amount_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::Shipping::PriceSack::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::PriceSack::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::PriceSack::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::Shipping::PriceSack::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::PriceSack::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::PriceSack::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::Shipping::PriceSack::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+  include ::Spree::Calculator::Shipping::PriceSack::GeneratedRelationMethods
+end
+
+class Spree::Calculator::Shipping::PriceSack::ActiveRecord_Relation
 end
 
 module Spree::Calculator::Shipping::PriceSack::GeneratedAssociationMethods
@@ -15212,6 +16451,13 @@ module Spree::Calculator::Shipping::PriceSack::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::Shipping::PriceSack::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::Shipping::PriceSack::GeneratedRelationMethods
+end
+
+module Spree::Calculator::Shipping::PriceSack::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15241,6 +16487,34 @@ class Spree::Calculator::TieredFlatRate
   def preferred_tiers_default(); end
 
   def preferred_tiers_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::TieredFlatRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::TieredFlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::TieredFlatRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::TieredFlatRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::TieredFlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::TieredFlatRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::TieredFlatRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::TieredFlatRate::GeneratedRelationMethods
+end
+
+class Spree::Calculator::TieredFlatRate::ActiveRecord_Relation
 end
 
 module Spree::Calculator::TieredFlatRate::GeneratedAssociationMethods
@@ -15253,6 +16527,13 @@ module Spree::Calculator::TieredFlatRate::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::TieredFlatRate::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::TieredFlatRate::GeneratedRelationMethods
+end
+
+module Spree::Calculator::TieredFlatRate::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15282,6 +16563,34 @@ class Spree::Calculator::TieredPercent
   def preferred_tiers_default(); end
 
   def preferred_tiers_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Calculator::TieredPercent::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::TieredPercent::GeneratedRelationMethods
+end
+
+class Spree::Calculator::TieredPercent::ActiveRecord_AssociationRelation
+end
+
+class Spree::Calculator::TieredPercent::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::TieredPercent::GeneratedRelationMethods
+end
+
+class Spree::Calculator::TieredPercent::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Calculator::TieredPercent::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::Calculator::TieredPercent::GeneratedRelationMethods
+end
+
+class Spree::Calculator::TieredPercent::ActiveRecord_Relation
 end
 
 module Spree::Calculator::TieredPercent::GeneratedAssociationMethods
@@ -15294,6 +16603,13 @@ module Spree::Calculator::TieredPercent::GeneratedAttributeMethods
 end
 
 module Spree::Calculator::TieredPercent::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Calculator::TieredPercent::GeneratedRelationMethods
+end
+
+module Spree::Calculator::TieredPercent::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15389,6 +16705,31 @@ class Spree::Carton
   def validate_associated_records_for_orders(*args); end
 
   def validate_associated_records_for_shipments(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Carton::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Carton::GeneratedRelationMethods
+end
+
+class Spree::Carton::ActiveRecord_AssociationRelation
+end
+
+class Spree::Carton::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Carton::GeneratedRelationMethods
+end
+
+class Spree::Carton::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Carton::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Carton::GeneratedRelationMethods
+end
+
+class Spree::Carton::ActiveRecord_Relation
 end
 
 module Spree::Carton::GeneratedAssociationMethods
@@ -15460,6 +16801,16 @@ module Spree::Carton::GeneratedAttributeMethods
 end
 
 module Spree::Carton::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Carton::GeneratedRelationMethods
+  def reverse_chronological(*args, &block); end
+
+  def trackable(*args, &block); end
+end
+
+module Spree::Carton::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15541,9 +16892,6 @@ class Spree::Carton
   def self.trackable(*args); end
 end
 
-class Spree::CheckoutController
-end
-
 class Spree::Classification
   include ::Spree::Classification::GeneratedAttributeMethods
   include ::Spree::Classification::GeneratedAssociationMethods
@@ -15574,6 +16922,31 @@ class Spree::Classification
   def scope_name(); end
 
   def touch_record_sql(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Classification::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Classification::GeneratedRelationMethods
+end
+
+class Spree::Classification::ActiveRecord_AssociationRelation
+end
+
+class Spree::Classification::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Classification::GeneratedRelationMethods
+end
+
+class Spree::Classification::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Classification::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Classification::GeneratedRelationMethods
+end
+
+class Spree::Classification::ActiveRecord_Relation
 end
 
 module Spree::Classification::GeneratedAssociationMethods
@@ -15612,6 +16985,14 @@ module Spree::Classification::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Classification::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::Classification::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Classification
   extend ::ActiveRecord::Acts::List::NoUpdate::ClassMethods
   def self.acts_as_list_top(); end
@@ -15635,7 +17016,19 @@ class Spree::Classification
   def self.update_all_with_touch(updates); end
 end
 
-class Spree::ContentController
+class Spree::Core::ClassConstantizer::Set
+  include ::Enumerable
+  def <<(klass); end
+
+  def clear(*args, &block); end
+
+  def concat(klasses); end
+
+  def delete(object); end
+
+  def each(&blk); end
+
+  def empty?(*args, &block); end
 end
 
 module Spree::Core::ControllerHelpers::StrongParameters
@@ -15829,6 +17222,31 @@ class Spree::Country
   def validate_associated_records_for_prices(*args); end
 
   def validate_associated_records_for_states(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Country::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Country::GeneratedRelationMethods
+end
+
+class Spree::Country::ActiveRecord_AssociationRelation
+end
+
+class Spree::Country::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Country::GeneratedRelationMethods
+end
+
+class Spree::Country::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Country::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Country::GeneratedRelationMethods
+end
+
+class Spree::Country::ActiveRecord_Relation
 end
 
 module Spree::Country::GeneratedAssociationMethods
@@ -15864,6 +17282,13 @@ module Spree::Country::GeneratedAttributeMethods
 end
 
 module Spree::Country::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Country::GeneratedRelationMethods
+end
+
+module Spree::Country::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -15941,9 +17366,6 @@ class Spree::Country
   def self.before_remove_for_states?(); end
 end
 
-class Spree::CouponCodesController
-end
-
 class Spree::CreditCard
   include ::Spree::CreditCard::GeneratedAttributeMethods
   include ::Spree::CreditCard::GeneratedAssociationMethods
@@ -15988,6 +17410,31 @@ class Spree::CreditCard
   def validate_associated_records_for_address(*args); end
 
   def will_save_change_to_brand?(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::CreditCard::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::CreditCard::GeneratedRelationMethods
+end
+
+class Spree::CreditCard::ActiveRecord_AssociationRelation
+end
+
+class Spree::CreditCard::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::CreditCard::GeneratedRelationMethods
+end
+
+class Spree::CreditCard::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::CreditCard::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::CreditCard::GeneratedRelationMethods
+end
+
+class Spree::CreditCard::ActiveRecord_Relation
 end
 
 module Spree::CreditCard::GeneratedAssociationMethods
@@ -16025,6 +17472,14 @@ module Spree::CreditCard::GeneratedAttributeMethods
 end
 
 module Spree::CreditCard::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::CreditCard::GeneratedRelationMethods
+  def with_payment_profile(*args, &block); end
+end
+
+module Spree::CreditCard::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -16133,6 +17588,31 @@ class Spree::CustomerReturn
   def validate_associated_records_for_return_authorizations(*args); end
 
   def validate_associated_records_for_return_items(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::CustomerReturn::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::CustomerReturn::GeneratedRelationMethods
+end
+
+class Spree::CustomerReturn::ActiveRecord_AssociationRelation
+end
+
+class Spree::CustomerReturn::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::CustomerReturn::GeneratedRelationMethods
+end
+
+class Spree::CustomerReturn::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::CustomerReturn::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::CustomerReturn::GeneratedRelationMethods
+end
+
+class Spree::CustomerReturn::ActiveRecord_Relation
 end
 
 module Spree::CustomerReturn::GeneratedAssociationMethods
@@ -16182,6 +17662,13 @@ module Spree::CustomerReturn::GeneratedAttributeMethods
 end
 
 module Spree::CustomerReturn::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::CustomerReturn::GeneratedRelationMethods
+end
+
+module Spree::CustomerReturn::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -16333,11 +17820,76 @@ end
 class Spree::Gateway
   include ::Spree::Gateway::GeneratedAttributeMethods
   include ::Spree::Gateway::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Gateway::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::GeneratedRelationMethods
+end
+
+class Spree::Gateway::ActiveRecord_AssociationRelation
+end
+
+class Spree::Gateway::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::GeneratedRelationMethods
+end
+
+class Spree::Gateway::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Gateway::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::GeneratedRelationMethods
+end
+
+class Spree::Gateway::ActiveRecord_Relation
 end
 
 class Spree::Gateway::Bogus
   include ::Spree::Gateway::Bogus::GeneratedAttributeMethods
   include ::Spree::Gateway::Bogus::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Gateway::Bogus::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::Bogus::GeneratedRelationMethods
+end
+
+class Spree::Gateway::Bogus::ActiveRecord_AssociationRelation
+end
+
+class Spree::Gateway::Bogus::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::Bogus::GeneratedRelationMethods
+end
+
+class Spree::Gateway::Bogus::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Gateway::Bogus::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::Bogus::GeneratedRelationMethods
+end
+
+class Spree::Gateway::Bogus::ActiveRecord_Relation
 end
 
 module Spree::Gateway::Bogus::GeneratedAssociationMethods
@@ -16350,12 +17902,56 @@ module Spree::Gateway::Bogus::GeneratedAttributeMethods
 end
 
 module Spree::Gateway::Bogus::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Gateway::Bogus::GeneratedRelationMethods
+end
+
+module Spree::Gateway::Bogus::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
 class Spree::Gateway::BogusSimple
   include ::Spree::Gateway::BogusSimple::GeneratedAttributeMethods
   include ::Spree::Gateway::BogusSimple::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Gateway::BogusSimple::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::BogusSimple::GeneratedRelationMethods
+end
+
+class Spree::Gateway::BogusSimple::ActiveRecord_AssociationRelation
+end
+
+class Spree::Gateway::BogusSimple::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::BogusSimple::GeneratedRelationMethods
+end
+
+class Spree::Gateway::BogusSimple::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Gateway::BogusSimple::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedRelationMethods
+  include ::Spree::Gateway::BogusSimple::GeneratedRelationMethods
+end
+
+class Spree::Gateway::BogusSimple::ActiveRecord_Relation
 end
 
 module Spree::Gateway::BogusSimple::GeneratedAssociationMethods
@@ -16368,6 +17964,13 @@ module Spree::Gateway::BogusSimple::GeneratedAttributeMethods
 end
 
 module Spree::Gateway::BogusSimple::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Gateway::BogusSimple::GeneratedRelationMethods
+end
+
+module Spree::Gateway::BogusSimple::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -16384,7 +17987,11 @@ module Spree::Gateway::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::HomeController
+module Spree::Gateway::GeneratedRelationMethods
+end
+
+module Spree::Gateway::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Spree::Image
@@ -16404,6 +18011,36 @@ class Spree::Image
   def attachment=(file); end
 
   def attachment?(); end
+
+  def mini_url(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Image::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Asset::GeneratedRelationMethods
+  include ::Spree::Image::GeneratedRelationMethods
+end
+
+class Spree::Image::ActiveRecord_AssociationRelation
+end
+
+class Spree::Image::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Asset::GeneratedRelationMethods
+  include ::Spree::Image::GeneratedRelationMethods
+end
+
+class Spree::Image::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Image::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Asset::GeneratedRelationMethods
+  include ::Spree::Image::GeneratedRelationMethods
+end
+
+class Spree::Image::ActiveRecord_Relation
 end
 
 module Spree::Image::GeneratedAssociationMethods
@@ -16416,6 +18053,13 @@ module Spree::Image::GeneratedAttributeMethods
 end
 
 module Spree::Image::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Image::GeneratedRelationMethods
+end
+
+module Spree::Image::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -16428,205 +18072,6 @@ class Spree::Image
   def self._post_process_callbacks(); end
 
   def self._post_process_callbacks=(value); end
-end
-
-class Spree::InventoryUnit
-  include ::Spree::InventoryUnit::GeneratedAttributeMethods
-  include ::Spree::InventoryUnit::GeneratedAssociationMethods
-  include ::Spree::Core::StateMachines::InventoryUnit
-  include ::StateMachines::InstanceMethods
-  def after_add_for_return_items(); end
-
-  def after_add_for_return_items=(val); end
-
-  def after_add_for_return_items?(); end
-
-  def after_remove_for_return_items(); end
-
-  def after_remove_for_return_items=(val); end
-
-  def after_remove_for_return_items?(); end
-
-  def autosave_associated_records_for_carton(*args); end
-
-  def autosave_associated_records_for_line_item(*args); end
-
-  def autosave_associated_records_for_order(); end
-
-  def autosave_associated_records_for_original_return_item(); end
-
-  def autosave_associated_records_for_return_items(*args); end
-
-  def autosave_associated_records_for_shipment(*args); end
-
-  def autosave_associated_records_for_unit_cancel(); end
-
-  def autosave_associated_records_for_variant(*args); end
-
-  def before_add_for_return_items(); end
-
-  def before_add_for_return_items=(val); end
-
-  def before_add_for_return_items?(); end
-
-  def before_remove_for_return_items(); end
-
-  def before_remove_for_return_items=(val); end
-
-  def before_remove_for_return_items?(); end
-
-  def validate_associated_records_for_return_items(*args); end
-end
-
-module Spree::InventoryUnit::GeneratedAssociationMethods
-  def build_carton(*args, &block); end
-
-  def build_line_item(*args, &block); end
-
-  def build_original_return_item(*args, &block); end
-
-  def build_shipment(*args, &block); end
-
-  def build_unit_cancel(*args, &block); end
-
-  def build_variant(*args, &block); end
-
-  def carton(); end
-
-  def carton=(value); end
-
-  def create_carton(*args, &block); end
-
-  def create_carton!(*args, &block); end
-
-  def create_line_item(*args, &block); end
-
-  def create_line_item!(*args, &block); end
-
-  def create_original_return_item(*args, &block); end
-
-  def create_original_return_item!(*args, &block); end
-
-  def create_shipment(*args, &block); end
-
-  def create_shipment!(*args, &block); end
-
-  def create_unit_cancel(*args, &block); end
-
-  def create_unit_cancel!(*args, &block); end
-
-  def create_variant(*args, &block); end
-
-  def create_variant!(*args, &block); end
-
-  def line_item(); end
-
-  def line_item=(value); end
-
-  def order(); end
-
-  def order=(value); end
-
-  def original_return_item(); end
-
-  def original_return_item=(value); end
-
-  def reload_carton(); end
-
-  def reload_line_item(); end
-
-  def reload_order(); end
-
-  def reload_original_return_item(); end
-
-  def reload_shipment(); end
-
-  def reload_unit_cancel(); end
-
-  def reload_variant(); end
-
-  def return_item_ids(); end
-
-  def return_item_ids=(ids); end
-
-  def return_items(); end
-
-  def return_items=(value); end
-
-  def shipment(); end
-
-  def shipment=(value); end
-
-  def unit_cancel(); end
-
-  def unit_cancel=(value); end
-
-  def variant(); end
-
-  def variant=(value); end
-end
-
-module Spree::InventoryUnit::GeneratedAssociationMethods
-end
-
-module Spree::InventoryUnit::GeneratedAttributeMethods
-end
-
-module Spree::InventoryUnit::GeneratedAttributeMethods
-  extend ::Mutex_m
-end
-
-class Spree::InventoryUnit
-  extend ::StateMachines::ClassMethods
-  def self.after_add_for_return_items(); end
-
-  def self.after_add_for_return_items=(val); end
-
-  def self.after_add_for_return_items?(); end
-
-  def self.after_remove_for_return_items(); end
-
-  def self.after_remove_for_return_items=(val); end
-
-  def self.after_remove_for_return_items?(); end
-
-  def self.backordered(*args); end
-
-  def self.backordered_for_stock_item(*args); end
-
-  def self.backordered_per_variant(*args); end
-
-  def self.before_add_for_return_items(); end
-
-  def self.before_add_for_return_items=(val); end
-
-  def self.before_add_for_return_items?(); end
-
-  def self.before_remove_for_return_items(); end
-
-  def self.before_remove_for_return_items=(val); end
-
-  def self.before_remove_for_return_items?(); end
-
-  def self.cancelable(*args); end
-
-  def self.canceled(*args); end
-
-  def self.not_canceled(*args); end
-
-  def self.on_hand(*args); end
-
-  def self.pending(*args); end
-
-  def self.post_shipment(*args); end
-
-  def self.pre_shipment(*args); end
-
-  def self.returned(*args); end
-
-  def self.shippable(*args); end
-
-  def self.shipped(*args); end
 end
 
 class Spree::LegacyUser
@@ -16981,6 +18426,31 @@ class Spree::LegacyUser
   def validate_associated_records_for_user_stock_locations(*args); end
 
   def validate_associated_records_for_wallet_payment_sources(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::LegacyUser::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LegacyUser::GeneratedRelationMethods
+end
+
+class Spree::LegacyUser::ActiveRecord_AssociationRelation
+end
+
+class Spree::LegacyUser::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LegacyUser::GeneratedRelationMethods
+end
+
+class Spree::LegacyUser::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::LegacyUser::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LegacyUser::GeneratedRelationMethods
+end
+
+class Spree::LegacyUser::ActiveRecord_Relation
 end
 
 module Spree::LegacyUser::GeneratedAssociationMethods
@@ -17124,6 +18594,13 @@ module Spree::LegacyUser::GeneratedAttributeMethods
 end
 
 module Spree::LegacyUser::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::LegacyUser::GeneratedRelationMethods
+end
+
+module Spree::LegacyUser::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -17563,6 +19040,31 @@ class Spree::LineItem
   def validate_associated_records_for_inventory_units(*args); end
 
   def validate_associated_records_for_line_item_actions(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::LineItem::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LineItem::GeneratedRelationMethods
+end
+
+class Spree::LineItem::ActiveRecord_AssociationRelation
+end
+
+class Spree::LineItem::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LineItem::GeneratedRelationMethods
+end
+
+class Spree::LineItem::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::LineItem::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LineItem::GeneratedRelationMethods
+end
+
+class Spree::LineItem::ActiveRecord_Relation
 end
 
 module Spree::LineItem::GeneratedAssociationMethods
@@ -17648,6 +19150,13 @@ module Spree::LineItem::GeneratedAttributeMethods
 end
 
 module Spree::LineItem::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::LineItem::GeneratedRelationMethods
+end
+
+module Spree::LineItem::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -17756,6 +19265,31 @@ class Spree::LineItemAction
   def autosave_associated_records_for_action(*args); end
 
   def autosave_associated_records_for_line_item(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::LineItemAction::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LineItemAction::GeneratedRelationMethods
+end
+
+class Spree::LineItemAction::ActiveRecord_AssociationRelation
+end
+
+class Spree::LineItemAction::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LineItemAction::GeneratedRelationMethods
+end
+
+class Spree::LineItemAction::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::LineItemAction::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LineItemAction::GeneratedRelationMethods
+end
+
+class Spree::LineItemAction::ActiveRecord_Relation
 end
 
 module Spree::LineItemAction::GeneratedAssociationMethods
@@ -17794,13 +19328,42 @@ module Spree::LineItemAction::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::LocaleController
+module Spree::LineItemAction::GeneratedRelationMethods
+end
+
+module Spree::LineItemAction::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Spree::LogEntry
   include ::Spree::LogEntry::GeneratedAttributeMethods
   include ::Spree::LogEntry::GeneratedAssociationMethods
   def autosave_associated_records_for_source(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::LogEntry::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LogEntry::GeneratedRelationMethods
+end
+
+class Spree::LogEntry::ActiveRecord_AssociationRelation
+end
+
+class Spree::LogEntry::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LogEntry::GeneratedRelationMethods
+end
+
+class Spree::LogEntry::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::LogEntry::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::LogEntry::GeneratedRelationMethods
+end
+
+class Spree::LogEntry::ActiveRecord_Relation
 end
 
 module Spree::LogEntry::GeneratedAssociationMethods
@@ -17818,6 +19381,13 @@ module Spree::LogEntry::GeneratedAttributeMethods
 end
 
 module Spree::LogEntry::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::LogEntry::GeneratedRelationMethods
+end
+
+module Spree::LogEntry::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -17951,6 +19521,31 @@ class Spree::OptionType
   def validate_associated_records_for_product_option_types(*args); end
 
   def validate_associated_records_for_products(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::OptionType::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionType::GeneratedRelationMethods
+end
+
+class Spree::OptionType::ActiveRecord_AssociationRelation
+end
+
+class Spree::OptionType::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionType::GeneratedRelationMethods
+end
+
+class Spree::OptionType::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::OptionType::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionType::GeneratedRelationMethods
+end
+
+class Spree::OptionType::ActiveRecord_Relation
 end
 
 module Spree::OptionType::GeneratedAssociationMethods
@@ -17988,6 +19583,14 @@ module Spree::OptionType::GeneratedAttributeMethods
 end
 
 module Spree::OptionType::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::OptionType::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::OptionType::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -18170,6 +19773,31 @@ class Spree::OptionValue
   def validate_associated_records_for_option_values_variants(*args); end
 
   def validate_associated_records_for_variants(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::OptionValue::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionValue::GeneratedRelationMethods
+end
+
+class Spree::OptionValue::ActiveRecord_AssociationRelation
+end
+
+class Spree::OptionValue::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionValue::GeneratedRelationMethods
+end
+
+class Spree::OptionValue::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::OptionValue::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionValue::GeneratedRelationMethods
+end
+
+class Spree::OptionValue::ActiveRecord_Relation
 end
 
 module Spree::OptionValue::GeneratedAssociationMethods
@@ -18209,6 +19837,14 @@ module Spree::OptionValue::GeneratedAttributeMethods
 end
 
 module Spree::OptionValue::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::OptionValue::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::OptionValue::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -18289,6 +19925,31 @@ class Spree::OptionValuesVariant
   def autosave_associated_records_for_option_value(*args); end
 
   def autosave_associated_records_for_variant(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::OptionValuesVariant::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionValuesVariant::GeneratedRelationMethods
+end
+
+class Spree::OptionValuesVariant::ActiveRecord_AssociationRelation
+end
+
+class Spree::OptionValuesVariant::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionValuesVariant::GeneratedRelationMethods
+end
+
+class Spree::OptionValuesVariant::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::OptionValuesVariant::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OptionValuesVariant::GeneratedRelationMethods
+end
+
+class Spree::OptionValuesVariant::ActiveRecord_Relation
 end
 
 module Spree::OptionValuesVariant::GeneratedAssociationMethods
@@ -18327,12 +19988,25 @@ module Spree::OptionValuesVariant::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::OptionValuesVariant::GeneratedRelationMethods
+end
+
+module Spree::OptionValuesVariant::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Order
   include ::Spree::Order::GeneratedAttributeMethods
   include ::Spree::Order::GeneratedAssociationMethods
   include ::Spree::Core::StateMachines::Order
   include ::Spree::Order::Payments
   include ::StateMachines::InstanceMethods
+  def add_default_payment_from_wallet(); end
+
+  def add_payment_sources_to_wallet(); end
+
+  def add_store_credit_payments(); end
+
   def after_add_for_adjustments(); end
 
   def after_add_for_adjustments=(val); end
@@ -18573,6 +20247,30 @@ class Spree::Order
 
   def after_remove_for_variants?(); end
 
+  def all_inventory_units_returned?(); end
+
+  def allow_cancel?(); end
+
+  def amount(); end
+
+  def apply_free_shipping_promotions(*args, &block); end
+
+  def apply_shipping_promotions(); end
+
+  def approved?(); end
+
+  def assign_billing_to_shipping_address(); end
+
+  def assign_default_addresses!(*args, &block); end
+
+  def assign_default_credit_card(*args, &block); end
+
+  def assign_default_user_addresses(); end
+
+  def assign_default_user_addresses!(*args, &block); end
+
+  def associate_user!(user, override_email=T.unsafe(nil)); end
+
   def autosave_associated_records_for_adjustments(*args); end
 
   def autosave_associated_records_for_all_adjustments(*args); end
@@ -18626,6 +20324,10 @@ class Spree::Order
   def autosave_associated_records_for_valid_store_credit_payments(*args); end
 
   def autosave_associated_records_for_variants(*args); end
+
+  def available_payment_methods(); end
+
+  def backordered?(); end
 
   def before_add_for_adjustments(); end
 
@@ -18867,6 +20569,12 @@ class Spree::Order
 
   def before_remove_for_variants?(); end
 
+  def bill_address_firstname(*args, &block); end
+
+  def bill_address_lastname(*args, &block); end
+
+  def bill_address_name(*args, &block); end
+
   def billing_address(*args); end
 
   def billing_address=(*args); end
@@ -18891,9 +20599,59 @@ class Spree::Order
 
   def billing_address_previously_changed?(*args); end
 
+  def billing_address_required?(); end
+
   def billing_address_was(*args); end
 
   def billing_address_will_change!(*args); end
+
+  def billing_firstname(*args, &block); end
+
+  def billing_lastname(*args, &block); end
+
+  def billing_name(*args, &block); end
+
+  def can_add_coupon?(); end
+
+  def can_approve?(); end
+
+  def can_ship?(); end
+
+  def canceled_by(user); end
+
+  def cancellations(); end
+
+  def checkout_allowed?(); end
+
+  def completed?(); end
+
+  def confirmation_required?(*args, &block); end
+
+  def contains?(variant, options=T.unsafe(nil)); end
+
+  def contents(); end
+
+  def coupon_code(); end
+
+  def coupon_code=(code); end
+
+  def covered_by_store_credit(); end
+
+  def covered_by_store_credit?(); end
+
+  def create_proposed_shipments(); end
+
+  def create_shipments_for_line_item(line_item); end
+
+  def create_tax_charge!(*args, &block); end
+
+  def credit_cards(); end
+
+  def currency(); end
+
+  def deliver_order_confirmation_email(); end
+
+  def discounted_item_amount(*args, &block); end
 
   def display_additional_tax_total(); end
 
@@ -18907,13 +20665,93 @@ class Spree::Order
 
   def display_outstanding_balance(); end
 
+  def display_ship_total(); end
+
   def display_shipment_total(); end
+
+  def display_store_credit_remaining_after_capture(); end
 
   def display_tax_total(); end
 
   def display_total(); end
 
+  def display_total_applicable_store_credit(); end
+
   def display_total_available_store_credit(); end
+
+  def empty!(); end
+
+  def ensure_billing_address(); end
+
+  def ensure_line_item_variants_are_not_deleted(); end
+
+  def ensure_shipping_address(); end
+
+  def ensure_updated_shipments(); end
+
+  def finalize!(); end
+
+  def find_line_item_by_variant(variant, options=T.unsafe(nil)); end
+
+  def fulfill!(); end
+
+  def generate_order_number(options=T.unsafe(nil)); end
+
+  def has_non_reimbursement_related_refunds?(); end
+
+  def has_step?(*args, &block); end
+
+  def insufficient_stock_lines(); end
+
+  def is_risky?(); end
+
+  def item_total_before_tax(); end
+
+  def item_total_excluding_vat(); end
+
+  def line_item_comparison_hooks(); end
+
+  def line_item_comparison_hooks=(val); end
+
+  def line_item_comparison_hooks?(); end
+
+  def line_item_options_match(line_item, options); end
+
+  def merge!(*args); end
+
+  def name(); end
+
+  def order_total_after_store_credit(); end
+
+  def outstanding_balance(); end
+
+  def outstanding_balance?(); end
+
+  def paid?(); end
+
+  def payment_required?(); end
+
+  def persist_user_address!(); end
+
+  def persist_user_credit_card(*args, &block); end
+
+  def pre_tax_item_amount(*args, &block); end
+
+  def quantity(); end
+
+  def quantity_of(variant, options=T.unsafe(nil)); end
+
+  def recalculate(); end
+
+  def record_ip_address(ip_address); end
+
+  def refresh_shipment_rates(); end
+
+  def refund_total(); end
+
+  def reimbursement_total(); end
+
+  def restart_checkout_flow(); end
 
   def restore_billing_address!(*args); end
 
@@ -18932,6 +20770,8 @@ class Spree::Order
   def saved_change_to_shipping_address(*args); end
 
   def saved_change_to_shipping_address?(*args); end
+
+  def set_shipments_cost(*args, &block); end
 
   def ship_total(*args); end
 
@@ -18961,6 +20801,12 @@ class Spree::Order
 
   def ship_total_will_change!(*args); end
 
+  def shipped?(); end
+
+  def shipped_shipments(); end
+
+  def shipping(); end
+
   def shipping_address(*args); end
 
   def shipping_address=(*args); end
@@ -18988,6 +20834,50 @@ class Spree::Order
   def shipping_address_was(*args); end
 
   def shipping_address_will_change!(*args); end
+
+  def shipping_discount(); end
+
+  def shipping_eq_billing_address?(); end
+
+  def state_changed(*args, &block); end
+
+  def tax_address(); end
+
+  def tax_total(); end
+
+  def temporary_address(); end
+
+  def temporary_address=(temporary_address); end
+
+  def temporary_credit_card(*args, &block); end
+
+  def temporary_credit_card=(*args, &block); end
+
+  def temporary_payment_source(); end
+
+  def temporary_payment_source=(temporary_payment_source); end
+
+  def token(); end
+
+  def total_applicable_store_credit(); end
+
+  def total_available_store_credit(); end
+
+  def update!(*args); end
+
+  def update_hooks(); end
+
+  def update_hooks=(val); end
+
+  def update_hooks?(); end
+
+  def updater(); end
+
+  def use_billing(); end
+
+  def use_billing=(use_billing); end
+
+  def valid_credit_cards(); end
 
   def validate_associated_records_for_adjustments(*args); end
 
@@ -19033,11 +20923,39 @@ class Spree::Order
 
   def validate_associated_records_for_variants(*args); end
 
+  def validate_payments_attributes(attributes); end
+
   def will_save_change_to_billing_address?(*args); end
 
   def will_save_change_to_ship_total?(*args); end
 
   def will_save_change_to_shipping_address?(*args); end
+  ORDER_NUMBER_LETTERS = ::T.let(nil, ::T.untyped)
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Order::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Order::GeneratedRelationMethods
+end
+
+class Spree::Order::ActiveRecord_AssociationRelation
+end
+
+class Spree::Order::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Order::GeneratedRelationMethods
+end
+
+class Spree::Order::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Order::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Order::GeneratedRelationMethods
+end
+
+class Spree::Order::ActiveRecord_Relation
 end
 
 module Spree::Order::GeneratedAssociationMethods
@@ -19304,6 +21222,26 @@ end
 
 module Spree::Order::GeneratedAttributeMethods
   extend ::Mutex_m
+end
+
+module Spree::Order::GeneratedRelationMethods
+  def by_store(*args, &block); end
+
+  def completed_between(*args, &block); end
+
+  def created_between(*args, &block); end
+
+  def reverse_chronological(*args, &block); end
+end
+
+module Spree::Order::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class Spree::Order::InsufficientStock
+  def initialize(message=T.unsafe(nil), items: T.unsafe(nil)); end
+
+  def items(); end
 end
 
 module Spree::Order::ShipmentsAssociationExtension
@@ -19797,19 +21735,76 @@ class Spree::Order
 
   def self.before_remove_for_variants?(); end
 
+  def self.by_customer(customer); end
+
+  def self.by_state(state); end
+
   def self.by_store(*args); end
+
+  def self.canceled(); end
+
+  def self.complete(); end
 
   def self.completed_between(*args); end
 
   def self.created_between(*args); end
 
+  def self.find_by_param(value); end
+
+  def self.find_by_param!(value); end
+
+  def self.incomplete(); end
+
+  def self.line_item_comparison_hooks(); end
+
+  def self.line_item_comparison_hooks=(val); end
+
+  def self.line_item_comparison_hooks?(); end
+
+  def self.not_canceled(); end
+
+  def self.register_line_item_comparison_hook(hook); end
+
+  def self.register_update_hook(hook); end
+
   def self.reverse_chronological(*args); end
+
+  def self.update_hooks(); end
+
+  def self.update_hooks=(val); end
+
+  def self.update_hooks?(); end
 end
 
 class Spree::OrderMutex
   include ::Spree::OrderMutex::GeneratedAttributeMethods
   include ::Spree::OrderMutex::GeneratedAssociationMethods
   def autosave_associated_records_for_order(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::OrderMutex::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OrderMutex::GeneratedRelationMethods
+end
+
+class Spree::OrderMutex::ActiveRecord_AssociationRelation
+end
+
+class Spree::OrderMutex::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OrderMutex::GeneratedRelationMethods
+end
+
+class Spree::OrderMutex::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::OrderMutex::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OrderMutex::GeneratedRelationMethods
+end
+
+class Spree::OrderMutex::ActiveRecord_Relation
 end
 
 module Spree::OrderMutex::GeneratedAssociationMethods
@@ -19836,6 +21831,14 @@ module Spree::OrderMutex::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::OrderMutex::GeneratedRelationMethods
+  def expired(*args, &block); end
+end
+
+module Spree::OrderMutex::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::OrderMutex
   def self.expired(*args); end
 end
@@ -19848,6 +21851,31 @@ class Spree::OrderPromotion
   def autosave_associated_records_for_promotion(*args); end
 
   def autosave_associated_records_for_promotion_code(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::OrderPromotion::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OrderPromotion::GeneratedRelationMethods
+end
+
+class Spree::OrderPromotion::ActiveRecord_AssociationRelation
+end
+
+class Spree::OrderPromotion::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OrderPromotion::GeneratedRelationMethods
+end
+
+class Spree::OrderPromotion::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::OrderPromotion::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::OrderPromotion::GeneratedRelationMethods
+end
+
+class Spree::OrderPromotion::ActiveRecord_Relation
 end
 
 module Spree::OrderPromotion::GeneratedAssociationMethods
@@ -19898,7 +21926,11 @@ module Spree::OrderPromotion::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::OrdersController
+module Spree::OrderPromotion::GeneratedRelationMethods
+end
+
+module Spree::OrderPromotion::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Spree::Payment
@@ -19907,6 +21939,8 @@ class Spree::Payment
   include ::Spree::Payment::Processing
   include ::Spree::Core::StateMachines::Payment
   include ::StateMachines::InstanceMethods
+  def actions(); end
+
   def after_add_for_capture_events(); end
 
   def after_add_for_capture_events=(val); end
@@ -19966,6 +22000,8 @@ class Spree::Payment
   def after_remove_for_state_changes=(val); end
 
   def after_remove_for_state_changes?(); end
+
+  def amount=(amount); end
 
   def autosave_associated_records_for_capture_events(*args); end
 
@@ -20043,6 +22079,18 @@ class Spree::Payment
 
   def before_remove_for_state_changes?(); end
 
+  def can_credit?(); end
+
+  def captured_amount(); end
+
+  def credit_allowed(); end
+
+  def currency(*args, &block); end
+
+  def display_amount(); end
+
+  def fully_refunded?(); end
+
   def identifier(*args, &block); end
 
   def identifier=(*args, &block); end
@@ -20071,11 +22119,31 @@ class Spree::Payment
 
   def identifier_will_change!(*args); end
 
+  def is_avs_risky?(); end
+
+  def is_cvv_risky?(); end
+
+  def money(); end
+
+  def offsets_total(); end
+
+  def payment_source(); end
+
+  def request_env(); end
+
+  def request_env=(request_env); end
+
   def restore_identifier!(*args); end
 
   def saved_change_to_identifier(*args); end
 
   def saved_change_to_identifier?(*args); end
+
+  def store_credit?(); end
+
+  def transaction_id(); end
+
+  def uncaptured_amount(); end
 
   def validate_associated_records_for_capture_events(*args); end
 
@@ -20088,6 +22156,34 @@ class Spree::Payment
   def validate_associated_records_for_state_changes(*args); end
 
   def will_save_change_to_identifier?(*args); end
+  IDENTIFIER_CHARS = ::T.let(nil, ::T.untyped)
+  NON_RISKY_AVS_CODES = ::T.let(nil, ::T.untyped)
+  RISKY_AVS_CODES = ::T.let(nil, ::T.untyped)
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Payment::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Payment::GeneratedRelationMethods
+end
+
+class Spree::Payment::ActiveRecord_AssociationRelation
+end
+
+class Spree::Payment::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Payment::GeneratedRelationMethods
+end
+
+class Spree::Payment::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Payment::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Payment::GeneratedRelationMethods
+end
+
+class Spree::Payment::ActiveRecord_Relation
 end
 
 module Spree::Payment::GeneratedAssociationMethods
@@ -20169,6 +22265,36 @@ module Spree::Payment::GeneratedAttributeMethods
 end
 
 module Spree::Payment::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Payment::GeneratedRelationMethods
+  def checkout(*args, &block); end
+
+  def completed(*args, &block); end
+
+  def failed(*args, &block); end
+
+  def from_credit_card(*args, &block); end
+
+  def not_store_credits(*args, &block); end
+
+  def offset_payment(*args, &block); end
+
+  def pending(*args, &block); end
+
+  def processing(*args, &block); end
+
+  def risky(*args, &block); end
+
+  def store_credits(*args, &block); end
+
+  def valid(*args, &block); end
+
+  def with_state(*args, &block); end
+end
+
+module Spree::Payment::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -20323,6 +22449,31 @@ class Spree::PaymentCaptureEvent
   include ::Spree::PaymentCaptureEvent::GeneratedAttributeMethods
   include ::Spree::PaymentCaptureEvent::GeneratedAssociationMethods
   def autosave_associated_records_for_payment(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PaymentCaptureEvent::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentCaptureEvent::GeneratedRelationMethods
+end
+
+class Spree::PaymentCaptureEvent::ActiveRecord_AssociationRelation
+end
+
+class Spree::PaymentCaptureEvent::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentCaptureEvent::GeneratedRelationMethods
+end
+
+class Spree::PaymentCaptureEvent::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PaymentCaptureEvent::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentCaptureEvent::GeneratedRelationMethods
+end
+
+class Spree::PaymentCaptureEvent::ActiveRecord_Relation
 end
 
 module Spree::PaymentCaptureEvent::GeneratedAssociationMethods
@@ -20346,6 +22497,13 @@ module Spree::PaymentCaptureEvent::GeneratedAttributeMethods
 end
 
 module Spree::PaymentCaptureEvent::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PaymentCaptureEvent::GeneratedRelationMethods
+end
+
+module Spree::PaymentCaptureEvent::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -20544,11 +22702,37 @@ class Spree::PaymentMethod
   def validate_associated_records_for_store_payment_methods(*args); end
 
   def validate_associated_records_for_stores(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PaymentMethod::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::ActiveRecord_AssociationRelation
+end
+
+class Spree::PaymentMethod::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PaymentMethod::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::ActiveRecord_Relation
 end
 
 class Spree::PaymentMethod::BogusCreditCard
   include ::Spree::PaymentMethod::BogusCreditCard::GeneratedAttributeMethods
   include ::Spree::PaymentMethod::BogusCreditCard::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
 end
 
 module Spree::PaymentMethod::BogusCreditCard::GeneratedAssociationMethods
@@ -20561,12 +22745,47 @@ module Spree::PaymentMethod::BogusCreditCard::GeneratedAttributeMethods
 end
 
 module Spree::PaymentMethod::BogusCreditCard::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
+end
+
+module Spree::PaymentMethod::BogusCreditCard::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
 class Spree::PaymentMethod::Check
   include ::Spree::PaymentMethod::Check::GeneratedAttributeMethods
   include ::Spree::PaymentMethod::Check::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PaymentMethod::Check::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::Check::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::Check::ActiveRecord_AssociationRelation
+end
+
+class Spree::PaymentMethod::Check::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::Check::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::Check::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PaymentMethod::Check::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::Check::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::Check::ActiveRecord_Relation
 end
 
 module Spree::PaymentMethod::Check::GeneratedAssociationMethods
@@ -20582,9 +22801,17 @@ module Spree::PaymentMethod::Check::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PaymentMethod::Check::GeneratedRelationMethods
+end
+
+module Spree::PaymentMethod::Check::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PaymentMethod::CreditCard
   include ::Spree::PaymentMethod::CreditCard::GeneratedAttributeMethods
   include ::Spree::PaymentMethod::CreditCard::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
 end
 
 module Spree::PaymentMethod::CreditCard::GeneratedAssociationMethods
@@ -20597,6 +22824,13 @@ module Spree::PaymentMethod::CreditCard::GeneratedAttributeMethods
 end
 
 module Spree::PaymentMethod::CreditCard::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
+end
+
+module Spree::PaymentMethod::CreditCard::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -20644,9 +22878,38 @@ module Spree::PaymentMethod::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PaymentMethod::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def available_to_admin(*args, &block); end
+
+  def available_to_store(*args, &block); end
+
+  def available_to_users(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def in_list(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def ordered_by_position(*args, &block); end
+
+  def paranoia_scope(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::PaymentMethod::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PaymentMethod::SimpleBogusCreditCard
   include ::Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedAttributeMethods
   include ::Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
 end
 
 module Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedAssociationMethods
@@ -20662,9 +22925,44 @@ module Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedRelationMethods
+end
+
+module Spree::PaymentMethod::SimpleBogusCreditCard::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PaymentMethod::StoreCredit
   include ::Spree::PaymentMethod::StoreCredit::GeneratedAttributeMethods
   include ::Spree::PaymentMethod::StoreCredit::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PaymentMethod::StoreCredit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::StoreCredit::ActiveRecord_AssociationRelation
+end
+
+class Spree::PaymentMethod::StoreCredit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::StoreCredit::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PaymentMethod::StoreCredit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentMethod::GeneratedRelationMethods
+  include ::Spree::PaymentMethod::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::PaymentMethod::StoreCredit::ActiveRecord_Relation
 end
 
 module Spree::PaymentMethod::StoreCredit::GeneratedAssociationMethods
@@ -20677,6 +22975,13 @@ module Spree::PaymentMethod::StoreCredit::GeneratedAttributeMethods
 end
 
 module Spree::PaymentMethod::StoreCredit::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PaymentMethod::StoreCredit::GeneratedRelationMethods
+end
+
+module Spree::PaymentMethod::StoreCredit::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -20942,6 +23247,31 @@ class Spree::PaymentSource
   def validate_associated_records_for_payments(*args); end
 
   def validate_associated_records_for_wallet_payment_sources(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PaymentSource::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentSource::GeneratedRelationMethods
+end
+
+class Spree::PaymentSource::ActiveRecord_AssociationRelation
+end
+
+class Spree::PaymentSource::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentSource::GeneratedRelationMethods
+end
+
+class Spree::PaymentSource::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PaymentSource::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PaymentSource::GeneratedRelationMethods
+end
+
+class Spree::PaymentSource::ActiveRecord_Relation
 end
 
 module Spree::PaymentSource::GeneratedAssociationMethods
@@ -20981,6 +23311,13 @@ module Spree::PaymentSource::GeneratedAttributeMethods
 end
 
 module Spree::PaymentSource::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PaymentSource::GeneratedRelationMethods
+end
+
+module Spree::PaymentSource::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -21153,6 +23490,31 @@ end
 class Spree::Preference
   include ::Spree::Preference::GeneratedAttributeMethods
   include ::Spree::Preference::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Preference::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Preference::GeneratedRelationMethods
+end
+
+class Spree::Preference::ActiveRecord_AssociationRelation
+end
+
+class Spree::Preference::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Preference::GeneratedRelationMethods
+end
+
+class Spree::Preference::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Preference::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Preference::GeneratedRelationMethods
+end
+
+class Spree::Preference::ActiveRecord_Relation
 end
 
 module Spree::Preference::GeneratedAssociationMethods
@@ -21165,6 +23527,13 @@ module Spree::Preference::GeneratedAttributeMethods
 end
 
 module Spree::Preference::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Preference::GeneratedRelationMethods
+end
+
+module Spree::Preference::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -21222,6 +23591,31 @@ class Spree::Price
   def really_delete(); end
 
   def really_destroyed?(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Price::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Price::GeneratedRelationMethods
+end
+
+class Spree::Price::ActiveRecord_AssociationRelation
+end
+
+class Spree::Price::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Price::GeneratedRelationMethods
+end
+
+class Spree::Price::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Price::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Price::GeneratedRelationMethods
+end
+
+class Spree::Price::ActiveRecord_Relation
 end
 
 module Spree::Price::GeneratedAssociationMethods
@@ -21257,6 +23651,30 @@ module Spree::Price::GeneratedAttributeMethods
 end
 
 module Spree::Price::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Price::GeneratedRelationMethods
+  def currently_valid(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def for_any_country(*args, &block); end
+
+  def for_master(*args, &block); end
+
+  def for_variant(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_default_attributes(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::Price::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -21968,6 +24386,31 @@ class Spree::Product
   def width(*args, &block); end
 
   def width=(arg); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Product::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Product::GeneratedRelationMethods
+end
+
+class Spree::Product::ActiveRecord_AssociationRelation
+end
+
+class Spree::Product::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Product::GeneratedRelationMethods
+end
+
+class Spree::Product::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Product::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Product::GeneratedRelationMethods
+end
+
+class Spree::Product::ActiveRecord_Relation
 end
 
 module Spree::Product::GeneratedAssociationMethods
@@ -22171,6 +24614,32 @@ module Spree::Product::GeneratedAttributeMethods
 end
 
 module Spree::Product::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Product::GeneratedRelationMethods
+  def ascend_by_name(*args, &block); end
+
+  def ascend_by_updated_at(*args, &block); end
+
+  def descend_by_name(*args, &block); end
+
+  def descend_by_updated_at(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def paranoia_scope(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+
+  def with_master_price(*args, &block); end
+end
+
+module Spree::Product::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -22804,6 +25273,31 @@ class Spree::ProductOptionType
   def scope_name(); end
 
   def touch_record_sql(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ProductOptionType::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductOptionType::GeneratedRelationMethods
+end
+
+class Spree::ProductOptionType::ActiveRecord_AssociationRelation
+end
+
+class Spree::ProductOptionType::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductOptionType::GeneratedRelationMethods
+end
+
+class Spree::ProductOptionType::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ProductOptionType::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductOptionType::GeneratedRelationMethods
+end
+
+class Spree::ProductOptionType::ActiveRecord_Relation
 end
 
 module Spree::ProductOptionType::GeneratedAssociationMethods
@@ -22842,6 +25336,14 @@ module Spree::ProductOptionType::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ProductOptionType::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::ProductOptionType::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ProductOptionType
   extend ::ActiveRecord::Acts::List::NoUpdate::ClassMethods
   def self.acts_as_list_top(); end
@@ -22871,6 +25373,31 @@ class Spree::ProductPromotionRule
   def autosave_associated_records_for_product(*args); end
 
   def autosave_associated_records_for_promotion_rule(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ProductPromotionRule::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductPromotionRule::GeneratedRelationMethods
+end
+
+class Spree::ProductPromotionRule::ActiveRecord_AssociationRelation
+end
+
+class Spree::ProductPromotionRule::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductPromotionRule::GeneratedRelationMethods
+end
+
+class Spree::ProductPromotionRule::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ProductPromotionRule::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductPromotionRule::GeneratedRelationMethods
+end
+
+class Spree::ProductPromotionRule::ActiveRecord_Relation
 end
 
 module Spree::ProductPromotionRule::GeneratedAssociationMethods
@@ -22909,6 +25436,13 @@ module Spree::ProductPromotionRule::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ProductPromotionRule::GeneratedRelationMethods
+end
+
+module Spree::ProductPromotionRule::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ProductProperty
   include ::Spree::ProductProperty::GeneratedAttributeMethods
   include ::Spree::ProductProperty::GeneratedAssociationMethods
@@ -22940,6 +25474,31 @@ class Spree::ProductProperty
   def scope_name(); end
 
   def touch_record_sql(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ProductProperty::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductProperty::GeneratedRelationMethods
+end
+
+class Spree::ProductProperty::ActiveRecord_AssociationRelation
+end
+
+class Spree::ProductProperty::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductProperty::GeneratedRelationMethods
+end
+
+class Spree::ProductProperty::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ProductProperty::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ProductProperty::GeneratedRelationMethods
+end
+
+class Spree::ProductProperty::ActiveRecord_Relation
 end
 
 module Spree::ProductProperty::GeneratedAssociationMethods
@@ -22978,6 +25537,14 @@ module Spree::ProductProperty::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ProductProperty::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::ProductProperty::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ProductProperty
   extend ::ActiveRecord::Acts::List::NoUpdate::ClassMethods
   def self.acts_as_list_top(); end
@@ -22999,9 +25566,6 @@ class Spree::ProductProperty
   def self.touch_record_sql(); end
 
   def self.update_all_with_touch(updates); end
-end
-
-class Spree::ProductsController
 end
 
 class Spree::Promotion
@@ -23176,6 +25740,7 @@ class Spree::Promotion
   def validate_associated_records_for_promotion_code_batches(*args); end
 
   def validate_associated_records_for_promotion_rules(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
 end
 
 class Spree::Promotion::Actions::CreateAdjustment
@@ -23214,6 +25779,34 @@ class Spree::Promotion::Actions::CreateAdjustment
   def validate_associated_records_for_adjustments(*args); end
 
   def validate_associated_records_for_calculator(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Actions::CreateAdjustment::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateAdjustment::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateAdjustment::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Actions::CreateAdjustment::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateAdjustment::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateAdjustment::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Actions::CreateAdjustment::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateAdjustment::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateAdjustment::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Actions::CreateAdjustment::GeneratedAssociationMethods
@@ -23247,6 +25840,13 @@ module Spree::Promotion::Actions::CreateAdjustment::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Actions::CreateAdjustment::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Actions::CreateAdjustment::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Actions::CreateAdjustment::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23313,6 +25913,34 @@ class Spree::Promotion::Actions::CreateItemAdjustments
   def validate_associated_records_for_adjustments(*args); end
 
   def validate_associated_records_for_calculator(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Actions::CreateItemAdjustments::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateItemAdjustments::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Actions::CreateItemAdjustments::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateItemAdjustments::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Actions::CreateItemAdjustments::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateItemAdjustments::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Actions::CreateItemAdjustments::GeneratedAssociationMethods
@@ -23346,6 +25974,13 @@ module Spree::Promotion::Actions::CreateItemAdjustments::GeneratedAttributeMetho
 end
 
 module Spree::Promotion::Actions::CreateItemAdjustments::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23442,6 +26077,37 @@ class Spree::Promotion::Actions::CreateQuantityAdjustments
   def validate_associated_records_for_line_item_actions(*args); end
 
   def validate_associated_records_for_line_items(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Actions::CreateQuantityAdjustments::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateQuantityAdjustments::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Actions::CreateQuantityAdjustments::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateQuantityAdjustments::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Actions::CreateQuantityAdjustments::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateItemAdjustments::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::CreateQuantityAdjustments::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedAssociationMethods
@@ -23469,6 +26135,13 @@ module Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedAttributeM
 end
 
 module Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Actions::CreateQuantityAdjustments::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23525,6 +26198,34 @@ end
 class Spree::Promotion::Actions::FreeShipping
   include ::Spree::Promotion::Actions::FreeShipping::GeneratedAttributeMethods
   include ::Spree::Promotion::Actions::FreeShipping::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Actions::FreeShipping::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::FreeShipping::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::FreeShipping::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Actions::FreeShipping::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::FreeShipping::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::FreeShipping::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Actions::FreeShipping::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+  include ::Spree::Promotion::Actions::FreeShipping::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Actions::FreeShipping::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Actions::FreeShipping::GeneratedAssociationMethods
@@ -23538,6 +26239,37 @@ end
 
 module Spree::Promotion::Actions::FreeShipping::GeneratedAttributeMethods
   extend ::Mutex_m
+end
+
+module Spree::Promotion::Actions::FreeShipping::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Actions::FreeShipping::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
+class Spree::Promotion::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Promotion::GeneratedRelationMethods
+end
+
+class Spree::Promotion::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Promotion::GeneratedRelationMethods
+end
+
+class Spree::Promotion::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Promotion::GeneratedRelationMethods
+end
+
+class Spree::Promotion::ActiveRecord_Relation
 end
 
 module Spree::Promotion::GeneratedAssociationMethods
@@ -23616,9 +26348,55 @@ module Spree::Promotion::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Promotion::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def advertised(*args, &block); end
+
+  def applied(*args, &block); end
+
+  def coupons(*args, &block); end
+
+  def has_actions(*args, &block); end
+
+  def started_and_unexpired(*args, &block); end
+end
+
+module Spree::Promotion::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Promotion::Rules::FirstOrder
   include ::Spree::Promotion::Rules::FirstOrder::GeneratedAttributeMethods
   include ::Spree::Promotion::Rules::FirstOrder::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::FirstOrder::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::FirstOrder::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::FirstOrder::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::FirstOrder::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::FirstOrder::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::FirstOrder::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::FirstOrder::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::FirstOrder::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::FirstOrder::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::FirstOrder::GeneratedAssociationMethods
@@ -23634,6 +26412,13 @@ module Spree::Promotion::Rules::FirstOrder::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Promotion::Rules::FirstOrder::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::FirstOrder::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Promotion::Rules::FirstRepeatPurchaseSince
   include ::Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedAttributeMethods
   include ::Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedAssociationMethods
@@ -23644,6 +26429,34 @@ class Spree::Promotion::Rules::FirstRepeatPurchaseSince
   def preferred_days_ago_default(); end
 
   def preferred_days_ago_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::FirstRepeatPurchaseSince::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::FirstRepeatPurchaseSince::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::FirstRepeatPurchaseSince::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::FirstRepeatPurchaseSince::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::FirstRepeatPurchaseSince::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::FirstRepeatPurchaseSince::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedAssociationMethods
@@ -23656,6 +26469,13 @@ module Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedAttributeMeth
 end
 
 module Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::FirstRepeatPurchaseSince::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23685,6 +26505,34 @@ class Spree::Promotion::Rules::ItemTotal
   def preferred_operator_default(); end
 
   def preferred_operator_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::ItemTotal::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::ItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::ItemTotal::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::ItemTotal::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::ItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::ItemTotal::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::ItemTotal::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::ItemTotal::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::ItemTotal::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::ItemTotal::GeneratedAssociationMethods
@@ -23697,6 +26545,13 @@ module Spree::Promotion::Rules::ItemTotal::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::ItemTotal::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::ItemTotal::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::ItemTotal::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23710,6 +26565,34 @@ class Spree::Promotion::Rules::NthOrder
   def preferred_nth_order_default(); end
 
   def preferred_nth_order_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::NthOrder::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::NthOrder::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::NthOrder::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::NthOrder::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::NthOrder::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::NthOrder::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::NthOrder::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::NthOrder::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::NthOrder::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::NthOrder::GeneratedAssociationMethods
@@ -23725,9 +26608,44 @@ module Spree::Promotion::Rules::NthOrder::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Promotion::Rules::NthOrder::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::NthOrder::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Promotion::Rules::OneUsePerUser
   include ::Spree::Promotion::Rules::OneUsePerUser::GeneratedAttributeMethods
   include ::Spree::Promotion::Rules::OneUsePerUser::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::OneUsePerUser::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::OneUsePerUser::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::OneUsePerUser::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::OneUsePerUser::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::OneUsePerUser::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::OneUsePerUser::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::OneUsePerUser::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::OneUsePerUser::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::OneUsePerUser::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::OneUsePerUser::GeneratedAssociationMethods
@@ -23740,6 +26658,13 @@ module Spree::Promotion::Rules::OneUsePerUser::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::OneUsePerUser::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::OneUsePerUser::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::OneUsePerUser::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23759,6 +26684,34 @@ class Spree::Promotion::Rules::OptionValue
   def preferred_match_policy_default(); end
 
   def preferred_match_policy_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::OptionValue::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::OptionValue::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::OptionValue::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::OptionValue::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::OptionValue::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::OptionValue::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::OptionValue::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::OptionValue::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::OptionValue::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::OptionValue::GeneratedAssociationMethods
@@ -23771,6 +26724,13 @@ module Spree::Promotion::Rules::OptionValue::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::OptionValue::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::OptionValue::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::OptionValue::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23840,6 +26800,34 @@ class Spree::Promotion::Rules::Product
   def validate_associated_records_for_product_promotion_rules(*args); end
 
   def validate_associated_records_for_products(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::Product::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Product::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Product::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::Product::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Product::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Product::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::Product::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Product::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Product::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::Product::GeneratedAssociationMethods
@@ -23867,6 +26855,13 @@ module Spree::Promotion::Rules::Product::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::Product::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::Product::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::Product::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -23978,6 +26973,34 @@ class Spree::Promotion::Rules::Store
   def validate_associated_records_for_promotion_rule_stores(*args); end
 
   def validate_associated_records_for_stores(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::Store::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Store::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Store::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::Store::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Store::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Store::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::Store::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Store::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Store::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::Store::GeneratedAssociationMethods
@@ -24005,6 +27028,13 @@ module Spree::Promotion::Rules::Store::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::Store::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::Store::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::Store::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24124,6 +27154,34 @@ class Spree::Promotion::Rules::Taxon
   def validate_associated_records_for_promotion_rule_taxons(*args); end
 
   def validate_associated_records_for_taxons(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::Taxon::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Taxon::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Taxon::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::Taxon::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Taxon::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Taxon::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::Taxon::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::Taxon::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::Taxon::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::Taxon::GeneratedAssociationMethods
@@ -24151,6 +27209,13 @@ module Spree::Promotion::Rules::Taxon::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::Taxon::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::Taxon::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::Taxon::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24262,6 +27327,34 @@ class Spree::Promotion::Rules::User
   def validate_associated_records_for_promotion_rule_users(*args); end
 
   def validate_associated_records_for_users(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::User::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::User::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::User::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::User::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::User::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::User::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::User::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::User::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::User::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::User::GeneratedAssociationMethods
@@ -24289,6 +27382,13 @@ module Spree::Promotion::Rules::User::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::User::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::User::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::User::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24345,6 +27445,34 @@ end
 class Spree::Promotion::Rules::UserLoggedIn
   include ::Spree::Promotion::Rules::UserLoggedIn::GeneratedAttributeMethods
   include ::Spree::Promotion::Rules::UserLoggedIn::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::UserLoggedIn::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::UserLoggedIn::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::UserLoggedIn::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::UserLoggedIn::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::UserLoggedIn::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::UserLoggedIn::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::UserLoggedIn::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::UserLoggedIn::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::UserLoggedIn::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::UserLoggedIn::GeneratedAssociationMethods
@@ -24357,6 +27485,13 @@ module Spree::Promotion::Rules::UserLoggedIn::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::UserLoggedIn::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::UserLoggedIn::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::UserLoggedIn::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24378,6 +27513,34 @@ class Spree::Promotion::Rules::UserRole
   def preferred_role_ids_default(); end
 
   def preferred_role_ids_type(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Promotion::Rules::UserRole::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::UserRole::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::UserRole::ActiveRecord_AssociationRelation
+end
+
+class Spree::Promotion::Rules::UserRole::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::UserRole::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::UserRole::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Promotion::Rules::UserRole::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+  include ::Spree::Promotion::Rules::UserRole::GeneratedRelationMethods
+end
+
+class Spree::Promotion::Rules::UserRole::ActiveRecord_Relation
 end
 
 module Spree::Promotion::Rules::UserRole::GeneratedAssociationMethods
@@ -24390,6 +27553,13 @@ module Spree::Promotion::Rules::UserRole::GeneratedAttributeMethods
 end
 
 module Spree::Promotion::Rules::UserRole::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Promotion::Rules::UserRole::GeneratedRelationMethods
+end
+
+module Spree::Promotion::Rules::UserRole::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24595,6 +27765,31 @@ class Spree::PromotionAction
   def really_delete(); end
 
   def really_destroyed?(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionAction::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+end
+
+class Spree::PromotionAction::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionAction::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+end
+
+class Spree::PromotionAction::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionAction::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionAction::GeneratedRelationMethods
+end
+
+class Spree::PromotionAction::ActiveRecord_Relation
 end
 
 module Spree::PromotionAction::GeneratedAssociationMethods
@@ -24618,6 +27813,24 @@ module Spree::PromotionAction::GeneratedAttributeMethods
 end
 
 module Spree::PromotionAction::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PromotionAction::GeneratedRelationMethods
+  def discarded(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def of_type(*args, &block); end
+
+  def shipping(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::PromotionAction::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24730,6 +27943,31 @@ class Spree::PromotionCategory
   def before_remove_for_promotions?(); end
 
   def validate_associated_records_for_promotions(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCategory::GeneratedRelationMethods
+end
+
+class Spree::PromotionCategory::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCategory::GeneratedRelationMethods
+end
+
+class Spree::PromotionCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCategory::GeneratedRelationMethods
+end
+
+class Spree::PromotionCategory::ActiveRecord_Relation
 end
 
 module Spree::PromotionCategory::GeneratedAssociationMethods
@@ -24749,6 +27987,13 @@ module Spree::PromotionCategory::GeneratedAttributeMethods
 end
 
 module Spree::PromotionCategory::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PromotionCategory::GeneratedRelationMethods
+end
+
+module Spree::PromotionCategory::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -24812,6 +28057,31 @@ class Spree::PromotionCode
   def before_remove_for_adjustments?(); end
 
   def validate_associated_records_for_adjustments(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionCode::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCode::GeneratedRelationMethods
+end
+
+class Spree::PromotionCode::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionCode::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCode::GeneratedRelationMethods
+end
+
+class Spree::PromotionCode::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionCode::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCode::GeneratedRelationMethods
+end
+
+class Spree::PromotionCode::ActiveRecord_Relation
 end
 
 class Spree::PromotionCode::BatchBuilder
@@ -24880,6 +28150,13 @@ module Spree::PromotionCode::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PromotionCode::GeneratedRelationMethods
+end
+
+module Spree::PromotionCode::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PromotionCode
   def self.after_add_for_adjustments(); end
 
@@ -24938,6 +28215,31 @@ class Spree::PromotionCodeBatch
   def before_remove_for_promotion_codes?(); end
 
   def validate_associated_records_for_promotion_codes(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionCodeBatch::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCodeBatch::GeneratedRelationMethods
+end
+
+class Spree::PromotionCodeBatch::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionCodeBatch::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCodeBatch::GeneratedRelationMethods
+end
+
+class Spree::PromotionCodeBatch::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionCodeBatch::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionCodeBatch::GeneratedRelationMethods
+end
+
+class Spree::PromotionCodeBatch::ActiveRecord_Relation
 end
 
 module Spree::PromotionCodeBatch::GeneratedAssociationMethods
@@ -24972,6 +28274,13 @@ module Spree::PromotionCodeBatch::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PromotionCodeBatch::GeneratedRelationMethods
+end
+
+module Spree::PromotionCodeBatch::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PromotionCodeBatch
   def self.after_add_for_promotion_codes(); end
 
@@ -24998,13 +28307,35 @@ class Spree::PromotionCodeBatch
   def self.before_remove_for_promotion_codes?(); end
 end
 
-class Spree::PromotionCodeBatchMailer
-end
-
 class Spree::PromotionRule
   include ::Spree::PromotionRule::GeneratedAttributeMethods
   include ::Spree::PromotionRule::GeneratedAssociationMethods
   def autosave_associated_records_for_promotion(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionRule::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+end
+
+class Spree::PromotionRule::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionRule::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+end
+
+class Spree::PromotionRule::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionRule::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRule::GeneratedRelationMethods
+end
+
+class Spree::PromotionRule::ActiveRecord_Relation
 end
 
 module Spree::PromotionRule::GeneratedAssociationMethods
@@ -25031,6 +28362,14 @@ module Spree::PromotionRule::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PromotionRule::GeneratedRelationMethods
+  def of_type(*args, &block); end
+end
+
+module Spree::PromotionRule::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PromotionRule
   def self.of_type(*args); end
 end
@@ -25041,6 +28380,31 @@ class Spree::PromotionRuleRole
   def autosave_associated_records_for_promotion_rule(*args); end
 
   def autosave_associated_records_for_role(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionRuleRole::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleRole::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleRole::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionRuleRole::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleRole::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleRole::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionRuleRole::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleRole::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleRole::ActiveRecord_Relation
 end
 
 module Spree::PromotionRuleRole::GeneratedAssociationMethods
@@ -25079,12 +28443,44 @@ module Spree::PromotionRuleRole::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PromotionRuleRole::GeneratedRelationMethods
+end
+
+module Spree::PromotionRuleRole::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PromotionRuleStore
   include ::Spree::PromotionRuleStore::GeneratedAttributeMethods
   include ::Spree::PromotionRuleStore::GeneratedAssociationMethods
   def autosave_associated_records_for_promotion_rule(*args); end
 
   def autosave_associated_records_for_store(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionRuleStore::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleStore::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleStore::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionRuleStore::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleStore::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleStore::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionRuleStore::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleStore::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleStore::ActiveRecord_Relation
 end
 
 module Spree::PromotionRuleStore::GeneratedAssociationMethods
@@ -25123,12 +28519,44 @@ module Spree::PromotionRuleStore::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PromotionRuleStore::GeneratedRelationMethods
+end
+
+module Spree::PromotionRuleStore::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PromotionRuleTaxon
   include ::Spree::PromotionRuleTaxon::GeneratedAttributeMethods
   include ::Spree::PromotionRuleTaxon::GeneratedAssociationMethods
   def autosave_associated_records_for_promotion_rule(*args); end
 
   def autosave_associated_records_for_taxon(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionRuleTaxon::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleTaxon::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleTaxon::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionRuleTaxon::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleTaxon::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleTaxon::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionRuleTaxon::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleTaxon::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleTaxon::ActiveRecord_Relation
 end
 
 module Spree::PromotionRuleTaxon::GeneratedAssociationMethods
@@ -25167,12 +28595,44 @@ module Spree::PromotionRuleTaxon::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::PromotionRuleTaxon::GeneratedRelationMethods
+end
+
+module Spree::PromotionRuleTaxon::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::PromotionRuleUser
   include ::Spree::PromotionRuleUser::GeneratedAttributeMethods
   include ::Spree::PromotionRuleUser::GeneratedAssociationMethods
   def autosave_associated_records_for_promotion_rule(*args); end
 
   def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::PromotionRuleUser::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleUser::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleUser::ActiveRecord_AssociationRelation
+end
+
+class Spree::PromotionRuleUser::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleUser::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleUser::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::PromotionRuleUser::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::PromotionRuleUser::GeneratedRelationMethods
+end
+
+class Spree::PromotionRuleUser::ActiveRecord_Relation
 end
 
 module Spree::PromotionRuleUser::GeneratedAssociationMethods
@@ -25208,6 +28668,13 @@ module Spree::PromotionRuleUser::GeneratedAttributeMethods
 end
 
 module Spree::PromotionRuleUser::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::PromotionRuleUser::GeneratedRelationMethods
+end
+
+module Spree::PromotionRuleUser::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -25269,6 +28736,31 @@ class Spree::Property
   def validate_associated_records_for_product_properties(*args); end
 
   def validate_associated_records_for_products(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Property::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Property::GeneratedRelationMethods
+end
+
+class Spree::Property::ActiveRecord_AssociationRelation
+end
+
+class Spree::Property::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Property::GeneratedRelationMethods
+end
+
+class Spree::Property::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Property::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Property::GeneratedRelationMethods
+end
+
+class Spree::Property::ActiveRecord_Relation
 end
 
 module Spree::Property::GeneratedAssociationMethods
@@ -25296,6 +28788,14 @@ module Spree::Property::GeneratedAttributeMethods
 end
 
 module Spree::Property::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Property::GeneratedRelationMethods
+  def sorted(*args, &block); end
+end
+
+module Spree::Property::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -25387,6 +28887,31 @@ class Spree::Refund
   def before_remove_for_log_entries?(); end
 
   def validate_associated_records_for_log_entries(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Refund::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Refund::GeneratedRelationMethods
+end
+
+class Spree::Refund::ActiveRecord_AssociationRelation
+end
+
+class Spree::Refund::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Refund::GeneratedRelationMethods
+end
+
+class Spree::Refund::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Refund::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Refund::GeneratedRelationMethods
+end
+
+class Spree::Refund::ActiveRecord_Relation
 end
 
 module Spree::Refund::GeneratedAssociationMethods
@@ -25442,6 +28967,14 @@ module Spree::Refund::GeneratedAttributeMethods
 end
 
 module Spree::Refund::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Refund::GeneratedRelationMethods
+  def non_reimbursement(*args, &block); end
+end
+
+module Spree::Refund::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -25504,6 +29037,31 @@ class Spree::RefundReason
   def before_remove_for_refunds?(); end
 
   def validate_associated_records_for_refunds(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::RefundReason::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::RefundReason::GeneratedRelationMethods
+end
+
+class Spree::RefundReason::ActiveRecord_AssociationRelation
+end
+
+class Spree::RefundReason::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::RefundReason::GeneratedRelationMethods
+end
+
+class Spree::RefundReason::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::RefundReason::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::RefundReason::GeneratedRelationMethods
+end
+
+class Spree::RefundReason::ActiveRecord_Relation
 end
 
 module Spree::RefundReason::GeneratedAssociationMethods
@@ -25523,6 +29081,16 @@ module Spree::RefundReason::GeneratedAttributeMethods
 end
 
 module Spree::RefundReason::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::RefundReason::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def arel_table(*args, &block); end
+end
+
+module Spree::RefundReason::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -25557,95 +29125,31 @@ end
 class Spree::Reimbursement
   include ::Spree::Reimbursement::GeneratedAttributeMethods
   include ::Spree::Reimbursement::GeneratedAssociationMethods
-  include ::Spree::Core::StateMachines::Reimbursement
-  include ::StateMachines::InstanceMethods
-  def after_add_for_credits(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
 
-  def after_add_for_credits=(val); end
+class Spree::Reimbursement::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Reimbursement::GeneratedRelationMethods
+end
 
-  def after_add_for_credits?(); end
+class Spree::Reimbursement::ActiveRecord_AssociationRelation
+end
 
-  def after_add_for_refunds(); end
+class Spree::Reimbursement::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Reimbursement::GeneratedRelationMethods
+end
 
-  def after_add_for_refunds=(val); end
+class Spree::Reimbursement::ActiveRecord_Associations_CollectionProxy
+end
 
-  def after_add_for_refunds?(); end
+class Spree::Reimbursement::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Reimbursement::GeneratedRelationMethods
+end
 
-  def after_add_for_return_items(); end
-
-  def after_add_for_return_items=(val); end
-
-  def after_add_for_return_items?(); end
-
-  def after_remove_for_credits(); end
-
-  def after_remove_for_credits=(val); end
-
-  def after_remove_for_credits?(); end
-
-  def after_remove_for_refunds(); end
-
-  def after_remove_for_refunds=(val); end
-
-  def after_remove_for_refunds?(); end
-
-  def after_remove_for_return_items(); end
-
-  def after_remove_for_return_items=(val); end
-
-  def after_remove_for_return_items?(); end
-
-  def autosave_associated_records_for_credits(*args); end
-
-  def autosave_associated_records_for_customer_return(*args); end
-
-  def autosave_associated_records_for_order(*args); end
-
-  def autosave_associated_records_for_refunds(*args); end
-
-  def autosave_associated_records_for_return_items(*args); end
-
-  def before_add_for_credits(); end
-
-  def before_add_for_credits=(val); end
-
-  def before_add_for_credits?(); end
-
-  def before_add_for_refunds(); end
-
-  def before_add_for_refunds=(val); end
-
-  def before_add_for_refunds?(); end
-
-  def before_add_for_return_items(); end
-
-  def before_add_for_return_items=(val); end
-
-  def before_add_for_return_items?(); end
-
-  def before_remove_for_credits(); end
-
-  def before_remove_for_credits=(val); end
-
-  def before_remove_for_credits?(); end
-
-  def before_remove_for_refunds(); end
-
-  def before_remove_for_refunds=(val); end
-
-  def before_remove_for_refunds?(); end
-
-  def before_remove_for_return_items(); end
-
-  def before_remove_for_return_items=(val); end
-
-  def before_remove_for_return_items?(); end
-
-  def validate_associated_records_for_credits(*args); end
-
-  def validate_associated_records_for_refunds(*args); end
-
-  def validate_associated_records_for_return_items(*args); end
+class Spree::Reimbursement::ActiveRecord_Relation
 end
 
 class Spree::Reimbursement::Credit
@@ -25654,6 +29158,31 @@ class Spree::Reimbursement::Credit
   def autosave_associated_records_for_creditable(*args); end
 
   def autosave_associated_records_for_reimbursement(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Reimbursement::Credit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Reimbursement::Credit::GeneratedRelationMethods
+end
+
+class Spree::Reimbursement::Credit::ActiveRecord_AssociationRelation
+end
+
+class Spree::Reimbursement::Credit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Reimbursement::Credit::GeneratedRelationMethods
+end
+
+class Spree::Reimbursement::Credit::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Reimbursement::Credit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Reimbursement::Credit::GeneratedRelationMethods
+end
+
+class Spree::Reimbursement::Credit::ActiveRecord_Relation
 end
 
 module Spree::Reimbursement::Credit::GeneratedAssociationMethods
@@ -25686,56 +29215,14 @@ module Spree::Reimbursement::Credit::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::Reimbursement::Credit::GeneratedRelationMethods
+end
+
+module Spree::Reimbursement::Credit::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 module Spree::Reimbursement::GeneratedAssociationMethods
-  def build_customer_return(*args, &block); end
-
-  def build_order(*args, &block); end
-
-  def create_customer_return(*args, &block); end
-
-  def create_customer_return!(*args, &block); end
-
-  def create_order(*args, &block); end
-
-  def create_order!(*args, &block); end
-
-  def credit_ids(); end
-
-  def credit_ids=(ids); end
-
-  def credits(); end
-
-  def credits=(value); end
-
-  def customer_return(); end
-
-  def customer_return=(value); end
-
-  def order(); end
-
-  def order=(value); end
-
-  def refund_ids(); end
-
-  def refund_ids=(ids); end
-
-  def refunds(); end
-
-  def refunds=(value); end
-
-  def reload_customer_return(); end
-
-  def reload_order(); end
-
-  def return_item_ids(); end
-
-  def return_item_ids=(ids); end
-
-  def return_items(); end
-
-  def return_items=(value); end
-
-  def return_items_attributes=(attributes); end
 end
 
 module Spree::Reimbursement::GeneratedAssociationMethods
@@ -25748,85 +29235,15 @@ module Spree::Reimbursement::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::Reimbursement::ReimbursementTypeEngine
-  include ::Spree::Reimbursement::ReimbursementTypeValidator
+module Spree::Reimbursement::GeneratedRelationMethods
 end
 
-class Spree::Reimbursement
-  extend ::StateMachines::ClassMethods
-  def self.after_add_for_credits(); end
+module Spree::Reimbursement::GeneratedRelationMethods
+  extend ::Mutex_m
+end
 
-  def self.after_add_for_credits=(val); end
-
-  def self.after_add_for_credits?(); end
-
-  def self.after_add_for_refunds(); end
-
-  def self.after_add_for_refunds=(val); end
-
-  def self.after_add_for_refunds?(); end
-
-  def self.after_add_for_return_items(); end
-
-  def self.after_add_for_return_items=(val); end
-
-  def self.after_add_for_return_items?(); end
-
-  def self.after_remove_for_credits(); end
-
-  def self.after_remove_for_credits=(val); end
-
-  def self.after_remove_for_credits?(); end
-
-  def self.after_remove_for_refunds(); end
-
-  def self.after_remove_for_refunds=(val); end
-
-  def self.after_remove_for_refunds?(); end
-
-  def self.after_remove_for_return_items(); end
-
-  def self.after_remove_for_return_items=(val); end
-
-  def self.after_remove_for_return_items?(); end
-
-  def self.before_add_for_credits(); end
-
-  def self.before_add_for_credits=(val); end
-
-  def self.before_add_for_credits?(); end
-
-  def self.before_add_for_refunds(); end
-
-  def self.before_add_for_refunds=(val); end
-
-  def self.before_add_for_refunds?(); end
-
-  def self.before_add_for_return_items(); end
-
-  def self.before_add_for_return_items=(val); end
-
-  def self.before_add_for_return_items?(); end
-
-  def self.before_remove_for_credits(); end
-
-  def self.before_remove_for_credits=(val); end
-
-  def self.before_remove_for_credits?(); end
-
-  def self.before_remove_for_refunds(); end
-
-  def self.before_remove_for_refunds=(val); end
-
-  def self.before_remove_for_refunds?(); end
-
-  def self.before_remove_for_return_items(); end
-
-  def self.before_remove_for_return_items=(val); end
-
-  def self.before_remove_for_return_items?(); end
-
-  def self.reimbursed(*args); end
+class Spree::Reimbursement::ReimbursementTypeEngine
+  include ::Spree::Reimbursement::ReimbursementTypeValidator
 end
 
 class Spree::ReimbursementType
@@ -25860,11 +29277,64 @@ class Spree::ReimbursementType
   def before_remove_for_return_items?(); end
 
   def validate_associated_records_for_return_items(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReimbursementType::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReimbursementType::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReimbursementType::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::ActiveRecord_Relation
 end
 
 class Spree::ReimbursementType::Credit
   include ::Spree::ReimbursementType::Credit::GeneratedAttributeMethods
   include ::Spree::ReimbursementType::Credit::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReimbursementType::Credit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::Credit::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::Credit::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReimbursementType::Credit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::Credit::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::Credit::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReimbursementType::Credit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::Credit::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::Credit::ActiveRecord_Relation
 end
 
 module Spree::ReimbursementType::Credit::GeneratedAssociationMethods
@@ -25880,6 +29350,13 @@ module Spree::ReimbursementType::Credit::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ReimbursementType::Credit::GeneratedRelationMethods
+end
+
+module Spree::ReimbursementType::Credit::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ReimbursementType::Credit
   extend ::Spree::ReimbursementType::ReimbursementHelpers
 end
@@ -25887,6 +29364,34 @@ end
 class Spree::ReimbursementType::Exchange
   include ::Spree::ReimbursementType::Exchange::GeneratedAttributeMethods
   include ::Spree::ReimbursementType::Exchange::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReimbursementType::Exchange::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::Exchange::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::Exchange::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReimbursementType::Exchange::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::Exchange::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::Exchange::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReimbursementType::Exchange::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::Exchange::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::Exchange::ActiveRecord_Relation
 end
 
 module Spree::ReimbursementType::Exchange::GeneratedAssociationMethods
@@ -25899,6 +29404,13 @@ module Spree::ReimbursementType::Exchange::GeneratedAttributeMethods
 end
 
 module Spree::ReimbursementType::Exchange::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ReimbursementType::Exchange::GeneratedRelationMethods
+end
+
+module Spree::ReimbursementType::Exchange::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -25922,9 +29434,45 @@ module Spree::ReimbursementType::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ReimbursementType::GeneratedRelationMethods
+  def active(*args, &block); end
+end
+
+module Spree::ReimbursementType::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ReimbursementType::OriginalPayment
   include ::Spree::ReimbursementType::OriginalPayment::GeneratedAttributeMethods
   include ::Spree::ReimbursementType::OriginalPayment::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReimbursementType::OriginalPayment::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::OriginalPayment::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::OriginalPayment::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReimbursementType::OriginalPayment::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::OriginalPayment::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::OriginalPayment::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReimbursementType::OriginalPayment::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::OriginalPayment::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::OriginalPayment::ActiveRecord_Relation
 end
 
 module Spree::ReimbursementType::OriginalPayment::GeneratedAssociationMethods
@@ -25940,9 +29488,44 @@ module Spree::ReimbursementType::OriginalPayment::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ReimbursementType::OriginalPayment::GeneratedRelationMethods
+end
+
+module Spree::ReimbursementType::OriginalPayment::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ReimbursementType::StoreCredit
   include ::Spree::ReimbursementType::StoreCredit::GeneratedAttributeMethods
   include ::Spree::ReimbursementType::StoreCredit::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReimbursementType::StoreCredit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::StoreCredit::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReimbursementType::StoreCredit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::StoreCredit::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReimbursementType::StoreCredit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReimbursementType::GeneratedRelationMethods
+  include ::Spree::ReimbursementType::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::ReimbursementType::StoreCredit::ActiveRecord_Relation
 end
 
 module Spree::ReimbursementType::StoreCredit::GeneratedAssociationMethods
@@ -25955,6 +29538,13 @@ module Spree::ReimbursementType::StoreCredit::GeneratedAttributeMethods
 end
 
 module Spree::ReimbursementType::StoreCredit::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ReimbursementType::StoreCredit::GeneratedRelationMethods
+end
+
+module Spree::ReimbursementType::StoreCredit::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -25986,416 +29576,37 @@ class Spree::ReimbursementType
   def self.before_remove_for_return_items?(); end
 end
 
-class Spree::ReturnAuthorization
-  include ::Spree::ReturnAuthorization::GeneratedAttributeMethods
-  include ::Spree::ReturnAuthorization::GeneratedAssociationMethods
-  include ::Spree::Core::StateMachines::ReturnAuthorization
-  include ::StateMachines::InstanceMethods
-  def after_add_for_customer_returns(); end
-
-  def after_add_for_customer_returns=(val); end
-
-  def after_add_for_customer_returns?(); end
-
-  def after_add_for_inventory_units(); end
-
-  def after_add_for_inventory_units=(val); end
-
-  def after_add_for_inventory_units?(); end
-
-  def after_add_for_return_items(); end
-
-  def after_add_for_return_items=(val); end
-
-  def after_add_for_return_items?(); end
-
-  def after_remove_for_customer_returns(); end
-
-  def after_remove_for_customer_returns=(val); end
-
-  def after_remove_for_customer_returns?(); end
-
-  def after_remove_for_inventory_units(); end
-
-  def after_remove_for_inventory_units=(val); end
-
-  def after_remove_for_inventory_units?(); end
-
-  def after_remove_for_return_items(); end
-
-  def after_remove_for_return_items=(val); end
-
-  def after_remove_for_return_items?(); end
-
-  def autosave_associated_records_for_customer_returns(*args); end
-
-  def autosave_associated_records_for_inventory_units(*args); end
-
-  def autosave_associated_records_for_order(*args); end
-
-  def autosave_associated_records_for_reason(*args); end
-
-  def autosave_associated_records_for_return_items(*args); end
-
-  def autosave_associated_records_for_stock_location(*args); end
-
-  def before_add_for_customer_returns(); end
-
-  def before_add_for_customer_returns=(val); end
-
-  def before_add_for_customer_returns?(); end
-
-  def before_add_for_inventory_units(); end
-
-  def before_add_for_inventory_units=(val); end
-
-  def before_add_for_inventory_units?(); end
-
-  def before_add_for_return_items(); end
-
-  def before_add_for_return_items=(val); end
-
-  def before_add_for_return_items?(); end
-
-  def before_remove_for_customer_returns(); end
-
-  def before_remove_for_customer_returns=(val); end
-
-  def before_remove_for_customer_returns?(); end
-
-  def before_remove_for_inventory_units(); end
-
-  def before_remove_for_inventory_units=(val); end
-
-  def before_remove_for_inventory_units?(); end
-
-  def before_remove_for_return_items(); end
-
-  def before_remove_for_return_items=(val); end
-
-  def before_remove_for_return_items?(); end
-
-  def display_amount(); end
-
-  def display_pre_tax_total(*args, &block); end
-
-  def display_total_excluding_vat(); end
-
-  def validate_associated_records_for_customer_returns(*args); end
-
-  def validate_associated_records_for_inventory_units(*args); end
-
-  def validate_associated_records_for_return_items(*args); end
-end
-
-module Spree::ReturnAuthorization::GeneratedAssociationMethods
-  def build_order(*args, &block); end
-
-  def build_reason(*args, &block); end
-
-  def build_stock_location(*args, &block); end
-
-  def create_order(*args, &block); end
-
-  def create_order!(*args, &block); end
-
-  def create_reason(*args, &block); end
-
-  def create_reason!(*args, &block); end
-
-  def create_stock_location(*args, &block); end
-
-  def create_stock_location!(*args, &block); end
-
-  def customer_return_ids(); end
-
-  def customer_return_ids=(ids); end
-
-  def customer_returns(); end
-
-  def customer_returns=(value); end
-
-  def inventory_unit_ids(); end
-
-  def inventory_unit_ids=(ids); end
-
-  def inventory_units(); end
-
-  def inventory_units=(value); end
-
-  def order(); end
-
-  def order=(value); end
-
-  def reason(); end
-
-  def reason=(value); end
-
-  def reload_order(); end
-
-  def reload_reason(); end
-
-  def reload_stock_location(); end
-
-  def return_item_ids(); end
-
-  def return_item_ids=(ids); end
-
-  def return_items(); end
-
-  def return_items=(value); end
-
-  def return_items_attributes=(attributes); end
-
-  def stock_location(); end
-
-  def stock_location=(value); end
-end
-
-module Spree::ReturnAuthorization::GeneratedAssociationMethods
-end
-
-module Spree::ReturnAuthorization::GeneratedAttributeMethods
-end
-
-module Spree::ReturnAuthorization::GeneratedAttributeMethods
-  extend ::Mutex_m
-end
-
-class Spree::ReturnAuthorization
-  extend ::StateMachines::ClassMethods
-  def self.after_add_for_customer_returns(); end
-
-  def self.after_add_for_customer_returns=(val); end
-
-  def self.after_add_for_customer_returns?(); end
-
-  def self.after_add_for_inventory_units(); end
-
-  def self.after_add_for_inventory_units=(val); end
-
-  def self.after_add_for_inventory_units?(); end
-
-  def self.after_add_for_return_items(); end
-
-  def self.after_add_for_return_items=(val); end
-
-  def self.after_add_for_return_items?(); end
-
-  def self.after_remove_for_customer_returns(); end
-
-  def self.after_remove_for_customer_returns=(val); end
-
-  def self.after_remove_for_customer_returns?(); end
-
-  def self.after_remove_for_inventory_units(); end
-
-  def self.after_remove_for_inventory_units=(val); end
-
-  def self.after_remove_for_inventory_units?(); end
-
-  def self.after_remove_for_return_items(); end
-
-  def self.after_remove_for_return_items=(val); end
-
-  def self.after_remove_for_return_items?(); end
-
-  def self.before_add_for_customer_returns(); end
-
-  def self.before_add_for_customer_returns=(val); end
-
-  def self.before_add_for_customer_returns?(); end
-
-  def self.before_add_for_inventory_units(); end
-
-  def self.before_add_for_inventory_units=(val); end
-
-  def self.before_add_for_inventory_units?(); end
-
-  def self.before_add_for_return_items(); end
-
-  def self.before_add_for_return_items=(val); end
-
-  def self.before_add_for_return_items?(); end
-
-  def self.before_remove_for_customer_returns(); end
-
-  def self.before_remove_for_customer_returns=(val); end
-
-  def self.before_remove_for_customer_returns?(); end
-
-  def self.before_remove_for_inventory_units(); end
-
-  def self.before_remove_for_inventory_units=(val); end
-
-  def self.before_remove_for_inventory_units?(); end
-
-  def self.before_remove_for_return_items(); end
-
-  def self.before_remove_for_return_items=(val); end
-
-  def self.before_remove_for_return_items?(); end
-end
-
 class Spree::ReturnItem
   include ::Spree::ReturnItem::GeneratedAttributeMethods
   include ::Spree::ReturnItem::GeneratedAssociationMethods
-  include ::Spree::Core::StateMachines::ReturnItem::ReceptionStatus
-  include ::StateMachines::InstanceMethods
-  include ::Spree::Core::StateMachines::ReturnItem::AcceptanceStatus
-  def autosave_associated_records_for_customer_return(*args); end
-
-  def autosave_associated_records_for_exchange_inventory_unit(*args); end
-
-  def autosave_associated_records_for_exchange_variant(*args); end
-
-  def autosave_associated_records_for_inventory_unit(*args); end
-
-  def autosave_associated_records_for_override_reimbursement_type(*args); end
-
-  def autosave_associated_records_for_preferred_reimbursement_type(*args); end
-
-  def autosave_associated_records_for_reimbursement(*args); end
-
-  def autosave_associated_records_for_return_authorization(*args); end
-
-  def autosave_associated_records_for_return_reason(*args); end
-
-  def display_amount(); end
-
-  def display_pre_tax_amount(*args, &block); end
-
-  def display_total(); end
-
-  def display_total_excluding_vat(); end
+  RelationType = ::T.let(nil, ::T.untyped)
 end
 
-class Spree::ReturnItem::EligibilityValidator::Default
+class Spree::ReturnItem::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReturnItem::GeneratedRelationMethods
 end
 
-class Spree::ReturnItem::EligibilityValidator::InventoryShipped
+class Spree::ReturnItem::ActiveRecord_AssociationRelation
 end
 
-class Spree::ReturnItem::EligibilityValidator::NoReimbursements
+class Spree::ReturnItem::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReturnItem::GeneratedRelationMethods
 end
 
-class Spree::ReturnItem::EligibilityValidator::OrderCompleted
+class Spree::ReturnItem::ActiveRecord_Associations_CollectionProxy
 end
 
-class Spree::ReturnItem::EligibilityValidator::RMARequired
+class Spree::ReturnItem::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReturnItem::GeneratedRelationMethods
 end
 
-class Spree::ReturnItem::EligibilityValidator::TimeSincePurchase
+class Spree::ReturnItem::ActiveRecord_Relation
 end
 
 module Spree::ReturnItem::GeneratedAssociationMethods
-  def build_customer_return(*args, &block); end
-
-  def build_exchange_inventory_unit(*args, &block); end
-
-  def build_exchange_variant(*args, &block); end
-
-  def build_inventory_unit(*args, &block); end
-
-  def build_override_reimbursement_type(*args, &block); end
-
-  def build_preferred_reimbursement_type(*args, &block); end
-
-  def build_reimbursement(*args, &block); end
-
-  def build_return_authorization(*args, &block); end
-
-  def build_return_reason(*args, &block); end
-
-  def create_customer_return(*args, &block); end
-
-  def create_customer_return!(*args, &block); end
-
-  def create_exchange_inventory_unit(*args, &block); end
-
-  def create_exchange_inventory_unit!(*args, &block); end
-
-  def create_exchange_variant(*args, &block); end
-
-  def create_exchange_variant!(*args, &block); end
-
-  def create_inventory_unit(*args, &block); end
-
-  def create_inventory_unit!(*args, &block); end
-
-  def create_override_reimbursement_type(*args, &block); end
-
-  def create_override_reimbursement_type!(*args, &block); end
-
-  def create_preferred_reimbursement_type(*args, &block); end
-
-  def create_preferred_reimbursement_type!(*args, &block); end
-
-  def create_reimbursement(*args, &block); end
-
-  def create_reimbursement!(*args, &block); end
-
-  def create_return_authorization(*args, &block); end
-
-  def create_return_authorization!(*args, &block); end
-
-  def create_return_reason(*args, &block); end
-
-  def create_return_reason!(*args, &block); end
-
-  def customer_return(); end
-
-  def customer_return=(value); end
-
-  def exchange_inventory_unit(); end
-
-  def exchange_inventory_unit=(value); end
-
-  def exchange_variant(); end
-
-  def exchange_variant=(value); end
-
-  def inventory_unit(); end
-
-  def inventory_unit=(value); end
-
-  def override_reimbursement_type(); end
-
-  def override_reimbursement_type=(value); end
-
-  def preferred_reimbursement_type(); end
-
-  def preferred_reimbursement_type=(value); end
-
-  def reimbursement(); end
-
-  def reimbursement=(value); end
-
-  def reload_customer_return(); end
-
-  def reload_exchange_inventory_unit(); end
-
-  def reload_exchange_variant(); end
-
-  def reload_inventory_unit(); end
-
-  def reload_override_reimbursement_type(); end
-
-  def reload_preferred_reimbursement_type(); end
-
-  def reload_reimbursement(); end
-
-  def reload_return_authorization(); end
-
-  def reload_return_reason(); end
-
-  def return_authorization(); end
-
-  def return_authorization=(value); end
-
-  def return_reason(); end
-
-  def return_reason=(value); end
 end
 
 module Spree::ReturnItem::GeneratedAssociationMethods
@@ -26408,51 +29619,11 @@ module Spree::ReturnItem::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::ReturnItem
-  extend ::StateMachines::ClassMethods
-  def self.accepted(*args); end
+module Spree::ReturnItem::GeneratedRelationMethods
+end
 
-  def self.awaiting_return(*args); end
-
-  def self.decided(*args); end
-
-  def self.exchange_processed(*args); end
-
-  def self.exchange_requested(*args); end
-
-  def self.exchange_required(*args); end
-
-  def self.expecting_return(*args); end
-
-  def self.given_to_customer(*args); end
-
-  def self.in_transit(*args); end
-
-  def self.lost_in_transit(*args); end
-
-  def self.manual_intervention_required(*args); end
-
-  def self.not_cancelled(*args); end
-
-  def self.not_expired(*args); end
-
-  def self.not_reimbursed(*args); end
-
-  def self.pending(*args); end
-
-  def self.received(*args); end
-
-  def self.reimbursed(*args); end
-
-  def self.rejected(*args); end
-
-  def self.shipped_wrong_item(*args); end
-
-  def self.short_shipped(*args); end
-
-  def self.undecided(*args); end
-
-  def self.valid(*args); end
+module Spree::ReturnItem::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Spree::ReturnReason
@@ -26486,6 +29657,31 @@ class Spree::ReturnReason
   def before_remove_for_return_authorizations?(); end
 
   def validate_associated_records_for_return_authorizations(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReturnReason::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReturnReason::GeneratedRelationMethods
+end
+
+class Spree::ReturnReason::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReturnReason::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReturnReason::GeneratedRelationMethods
+end
+
+class Spree::ReturnReason::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReturnReason::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ReturnReason::GeneratedRelationMethods
+end
+
+class Spree::ReturnReason::ActiveRecord_Relation
 end
 
 module Spree::ReturnReason::GeneratedAssociationMethods
@@ -26505,6 +29701,16 @@ module Spree::ReturnReason::GeneratedAttributeMethods
 end
 
 module Spree::ReturnReason::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ReturnReason::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def arel_table(*args, &block); end
+end
+
+module Spree::ReturnReason::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -26539,6 +29745,34 @@ end
 class Spree::ReturnsCalculator
   include ::Spree::ReturnsCalculator::GeneratedAttributeMethods
   include ::Spree::ReturnsCalculator::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ReturnsCalculator::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ReturnsCalculator::GeneratedRelationMethods
+end
+
+class Spree::ReturnsCalculator::ActiveRecord_AssociationRelation
+end
+
+class Spree::ReturnsCalculator::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ReturnsCalculator::GeneratedRelationMethods
+end
+
+class Spree::ReturnsCalculator::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ReturnsCalculator::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ReturnsCalculator::GeneratedRelationMethods
+end
+
+class Spree::ReturnsCalculator::ActiveRecord_Relation
 end
 
 module Spree::ReturnsCalculator::GeneratedAssociationMethods
@@ -26551,6 +29785,13 @@ module Spree::ReturnsCalculator::GeneratedAttributeMethods
 end
 
 module Spree::ReturnsCalculator::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ReturnsCalculator::GeneratedRelationMethods
+end
+
+module Spree::ReturnsCalculator::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -26612,6 +29853,31 @@ class Spree::Role
   def validate_associated_records_for_role_users(*args); end
 
   def validate_associated_records_for_users(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Role::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Role::GeneratedRelationMethods
+end
+
+class Spree::Role::ActiveRecord_AssociationRelation
+end
+
+class Spree::Role::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Role::GeneratedRelationMethods
+end
+
+class Spree::Role::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Role::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Role::GeneratedRelationMethods
+end
+
+class Spree::Role::ActiveRecord_Relation
 end
 
 module Spree::Role::GeneratedAssociationMethods
@@ -26639,6 +29905,13 @@ module Spree::Role::GeneratedAttributeMethods
 end
 
 module Spree::Role::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Role::GeneratedRelationMethods
+end
+
+module Spree::Role::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -26698,6 +29971,31 @@ class Spree::RoleUser
   def autosave_associated_records_for_role(*args); end
 
   def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::RoleUser::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::RoleUser::GeneratedRelationMethods
+end
+
+class Spree::RoleUser::ActiveRecord_AssociationRelation
+end
+
+class Spree::RoleUser::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::RoleUser::GeneratedRelationMethods
+end
+
+class Spree::RoleUser::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::RoleUser::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::RoleUser::GeneratedRelationMethods
+end
+
+class Spree::RoleUser::ActiveRecord_Relation
 end
 
 module Spree::RoleUser::GeneratedAssociationMethods
@@ -26736,544 +30034,44 @@ module Spree::RoleUser::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::Shipment
-  include ::Spree::Shipment::GeneratedAttributeMethods
-  include ::Spree::Shipment::GeneratedAssociationMethods
-  include ::Spree::Core::StateMachines::Shipment
-  include ::StateMachines::InstanceMethods
-  def after_add_for_adjustments(); end
-
-  def after_add_for_adjustments=(val); end
-
-  def after_add_for_adjustments?(); end
-
-  def after_add_for_cartons(); end
-
-  def after_add_for_cartons=(val); end
-
-  def after_add_for_cartons?(); end
-
-  def after_add_for_inventory_units(); end
-
-  def after_add_for_inventory_units=(val); end
-
-  def after_add_for_inventory_units?(); end
-
-  def after_add_for_line_items(); end
-
-  def after_add_for_line_items=(val); end
-
-  def after_add_for_line_items?(); end
-
-  def after_add_for_shipping_methods(); end
-
-  def after_add_for_shipping_methods=(val); end
-
-  def after_add_for_shipping_methods?(); end
-
-  def after_add_for_shipping_rates(); end
-
-  def after_add_for_shipping_rates=(val); end
-
-  def after_add_for_shipping_rates?(); end
-
-  def after_add_for_state_changes(); end
-
-  def after_add_for_state_changes=(val); end
-
-  def after_add_for_state_changes?(); end
-
-  def after_remove_for_adjustments(); end
-
-  def after_remove_for_adjustments=(val); end
-
-  def after_remove_for_adjustments?(); end
-
-  def after_remove_for_cartons(); end
-
-  def after_remove_for_cartons=(val); end
-
-  def after_remove_for_cartons?(); end
-
-  def after_remove_for_inventory_units(); end
-
-  def after_remove_for_inventory_units=(val); end
-
-  def after_remove_for_inventory_units?(); end
-
-  def after_remove_for_line_items(); end
-
-  def after_remove_for_line_items=(val); end
-
-  def after_remove_for_line_items?(); end
-
-  def after_remove_for_shipping_methods(); end
-
-  def after_remove_for_shipping_methods=(val); end
-
-  def after_remove_for_shipping_methods?(); end
-
-  def after_remove_for_shipping_rates(); end
-
-  def after_remove_for_shipping_rates=(val); end
-
-  def after_remove_for_shipping_rates?(); end
-
-  def after_remove_for_state_changes(); end
-
-  def after_remove_for_state_changes=(val); end
-
-  def after_remove_for_state_changes?(); end
-
-  def amount(*args); end
-
-  def amount=(*args); end
-
-  def amount?(*args); end
-
-  def amount_before_last_save(*args); end
-
-  def amount_before_type_cast(*args); end
-
-  def amount_came_from_user?(*args); end
-
-  def amount_change(*args); end
-
-  def amount_change_to_be_saved(*args); end
-
-  def amount_changed?(*args); end
-
-  def amount_in_database(*args); end
-
-  def amount_previous_change(*args); end
-
-  def amount_previously_changed?(*args); end
-
-  def amount_was(*args); end
-
-  def amount_will_change!(*args); end
-
-  def autosave_associated_records_for_adjustments(*args); end
-
-  def autosave_associated_records_for_cartons(*args); end
-
-  def autosave_associated_records_for_inventory_units(*args); end
-
-  def autosave_associated_records_for_line_items(*args); end
-
-  def autosave_associated_records_for_order(*args); end
-
-  def autosave_associated_records_for_shipping_methods(*args); end
-
-  def autosave_associated_records_for_shipping_rates(*args); end
-
-  def autosave_associated_records_for_state_changes(*args); end
-
-  def autosave_associated_records_for_stock_location(*args); end
-
-  def before_add_for_adjustments(); end
-
-  def before_add_for_adjustments=(val); end
-
-  def before_add_for_adjustments?(); end
-
-  def before_add_for_cartons(); end
-
-  def before_add_for_cartons=(val); end
-
-  def before_add_for_cartons?(); end
-
-  def before_add_for_inventory_units(); end
-
-  def before_add_for_inventory_units=(val); end
-
-  def before_add_for_inventory_units?(); end
-
-  def before_add_for_line_items(); end
-
-  def before_add_for_line_items=(val); end
-
-  def before_add_for_line_items?(); end
-
-  def before_add_for_shipping_methods(); end
-
-  def before_add_for_shipping_methods=(val); end
-
-  def before_add_for_shipping_methods?(); end
-
-  def before_add_for_shipping_rates(); end
-
-  def before_add_for_shipping_rates=(val); end
-
-  def before_add_for_shipping_rates?(); end
-
-  def before_add_for_state_changes(); end
-
-  def before_add_for_state_changes=(val); end
-
-  def before_add_for_state_changes?(); end
-
-  def before_remove_for_adjustments(); end
-
-  def before_remove_for_adjustments=(val); end
-
-  def before_remove_for_adjustments?(); end
-
-  def before_remove_for_cartons(); end
-
-  def before_remove_for_cartons=(val); end
-
-  def before_remove_for_cartons?(); end
-
-  def before_remove_for_inventory_units(); end
-
-  def before_remove_for_inventory_units=(val); end
-
-  def before_remove_for_inventory_units?(); end
-
-  def before_remove_for_line_items(); end
-
-  def before_remove_for_line_items=(val); end
-
-  def before_remove_for_line_items?(); end
-
-  def before_remove_for_shipping_methods(); end
-
-  def before_remove_for_shipping_methods=(val); end
-
-  def before_remove_for_shipping_methods?(); end
-
-  def before_remove_for_shipping_rates(); end
-
-  def before_remove_for_shipping_rates=(val); end
-
-  def before_remove_for_shipping_rates?(); end
-
-  def before_remove_for_state_changes(); end
-
-  def before_remove_for_state_changes=(val); end
-
-  def before_remove_for_state_changes?(); end
-
-  def display_amount(); end
-
-  def display_cost(); end
-
-  def display_discounted_cost(*args, &block); end
-
-  def display_final_price(*args, &block); end
-
-  def display_item_cost(); end
-
-  def display_total(); end
-
-  def display_total_before_tax(); end
-
-  def restore_amount!(*args); end
-
-  def saved_change_to_amount(*args); end
-
-  def saved_change_to_amount?(*args); end
-
-  def validate_associated_records_for_adjustments(*args); end
-
-  def validate_associated_records_for_cartons(*args); end
-
-  def validate_associated_records_for_inventory_units(*args); end
-
-  def validate_associated_records_for_line_items(*args); end
-
-  def validate_associated_records_for_shipping_methods(*args); end
-
-  def validate_associated_records_for_shipping_rates(*args); end
-
-  def validate_associated_records_for_state_changes(*args); end
-
-  def will_save_change_to_amount?(*args); end
+module Spree::RoleUser::GeneratedRelationMethods
 end
 
-module Spree::Shipment::GeneratedAssociationMethods
-  def adjustment_ids(); end
-
-  def adjustment_ids=(ids); end
-
-  def adjustments(); end
-
-  def adjustments=(value); end
-
-  def build_order(*args, &block); end
-
-  def build_stock_location(*args, &block); end
-
-  def carton_ids(); end
-
-  def carton_ids=(ids); end
-
-  def cartons(); end
-
-  def cartons=(value); end
-
-  def create_order(*args, &block); end
-
-  def create_order!(*args, &block); end
-
-  def create_stock_location(*args, &block); end
-
-  def create_stock_location!(*args, &block); end
-
-  def inventory_unit_ids(); end
-
-  def inventory_unit_ids=(ids); end
-
-  def inventory_units(); end
-
-  def inventory_units=(value); end
-
-  def inventory_units_attributes=(attributes); end
-
-  def line_item_ids(); end
-
-  def line_item_ids=(ids); end
-
-  def line_items(); end
-
-  def line_items=(value); end
-
-  def order(); end
-
-  def order=(value); end
-
-  def reload_order(); end
-
-  def reload_stock_location(); end
-
-  def shipping_method_ids(); end
-
-  def shipping_method_ids=(ids); end
-
-  def shipping_methods(); end
-
-  def shipping_methods=(value); end
-
-  def shipping_rate_ids(); end
-
-  def shipping_rate_ids=(ids); end
-
-  def shipping_rates(); end
-
-  def shipping_rates=(value); end
-
-  def state_change_ids(); end
-
-  def state_change_ids=(ids); end
-
-  def state_changes(); end
-
-  def state_changes=(value); end
-
-  def stock_location(); end
-
-  def stock_location=(value); end
-end
-
-module Spree::Shipment::GeneratedAssociationMethods
-end
-
-module Spree::Shipment::GeneratedAttributeMethods
-end
-
-module Spree::Shipment::GeneratedAttributeMethods
+module Spree::RoleUser::GeneratedRelationMethods
   extend ::Mutex_m
-end
-
-class Spree::Shipment
-  extend ::StateMachines::ClassMethods
-  def self.after_add_for_adjustments(); end
-
-  def self.after_add_for_adjustments=(val); end
-
-  def self.after_add_for_adjustments?(); end
-
-  def self.after_add_for_cartons(); end
-
-  def self.after_add_for_cartons=(val); end
-
-  def self.after_add_for_cartons?(); end
-
-  def self.after_add_for_inventory_units(); end
-
-  def self.after_add_for_inventory_units=(val); end
-
-  def self.after_add_for_inventory_units?(); end
-
-  def self.after_add_for_line_items(); end
-
-  def self.after_add_for_line_items=(val); end
-
-  def self.after_add_for_line_items?(); end
-
-  def self.after_add_for_shipping_methods(); end
-
-  def self.after_add_for_shipping_methods=(val); end
-
-  def self.after_add_for_shipping_methods?(); end
-
-  def self.after_add_for_shipping_rates(); end
-
-  def self.after_add_for_shipping_rates=(val); end
-
-  def self.after_add_for_shipping_rates?(); end
-
-  def self.after_add_for_state_changes(); end
-
-  def self.after_add_for_state_changes=(val); end
-
-  def self.after_add_for_state_changes?(); end
-
-  def self.after_remove_for_adjustments(); end
-
-  def self.after_remove_for_adjustments=(val); end
-
-  def self.after_remove_for_adjustments?(); end
-
-  def self.after_remove_for_cartons(); end
-
-  def self.after_remove_for_cartons=(val); end
-
-  def self.after_remove_for_cartons?(); end
-
-  def self.after_remove_for_inventory_units(); end
-
-  def self.after_remove_for_inventory_units=(val); end
-
-  def self.after_remove_for_inventory_units?(); end
-
-  def self.after_remove_for_line_items(); end
-
-  def self.after_remove_for_line_items=(val); end
-
-  def self.after_remove_for_line_items?(); end
-
-  def self.after_remove_for_shipping_methods(); end
-
-  def self.after_remove_for_shipping_methods=(val); end
-
-  def self.after_remove_for_shipping_methods?(); end
-
-  def self.after_remove_for_shipping_rates(); end
-
-  def self.after_remove_for_shipping_rates=(val); end
-
-  def self.after_remove_for_shipping_rates?(); end
-
-  def self.after_remove_for_state_changes(); end
-
-  def self.after_remove_for_state_changes=(val); end
-
-  def self.after_remove_for_state_changes?(); end
-
-  def self.before_add_for_adjustments(); end
-
-  def self.before_add_for_adjustments=(val); end
-
-  def self.before_add_for_adjustments?(); end
-
-  def self.before_add_for_cartons(); end
-
-  def self.before_add_for_cartons=(val); end
-
-  def self.before_add_for_cartons?(); end
-
-  def self.before_add_for_inventory_units(); end
-
-  def self.before_add_for_inventory_units=(val); end
-
-  def self.before_add_for_inventory_units?(); end
-
-  def self.before_add_for_line_items(); end
-
-  def self.before_add_for_line_items=(val); end
-
-  def self.before_add_for_line_items?(); end
-
-  def self.before_add_for_shipping_methods(); end
-
-  def self.before_add_for_shipping_methods=(val); end
-
-  def self.before_add_for_shipping_methods?(); end
-
-  def self.before_add_for_shipping_rates(); end
-
-  def self.before_add_for_shipping_rates=(val); end
-
-  def self.before_add_for_shipping_rates?(); end
-
-  def self.before_add_for_state_changes(); end
-
-  def self.before_add_for_state_changes=(val); end
-
-  def self.before_add_for_state_changes?(); end
-
-  def self.before_remove_for_adjustments(); end
-
-  def self.before_remove_for_adjustments=(val); end
-
-  def self.before_remove_for_adjustments?(); end
-
-  def self.before_remove_for_cartons(); end
-
-  def self.before_remove_for_cartons=(val); end
-
-  def self.before_remove_for_cartons?(); end
-
-  def self.before_remove_for_inventory_units(); end
-
-  def self.before_remove_for_inventory_units=(val); end
-
-  def self.before_remove_for_inventory_units?(); end
-
-  def self.before_remove_for_line_items(); end
-
-  def self.before_remove_for_line_items=(val); end
-
-  def self.before_remove_for_line_items?(); end
-
-  def self.before_remove_for_shipping_methods(); end
-
-  def self.before_remove_for_shipping_methods=(val); end
-
-  def self.before_remove_for_shipping_methods?(); end
-
-  def self.before_remove_for_shipping_rates(); end
-
-  def self.before_remove_for_shipping_rates=(val); end
-
-  def self.before_remove_for_shipping_rates?(); end
-
-  def self.before_remove_for_state_changes(); end
-
-  def self.before_remove_for_state_changes=(val); end
-
-  def self.before_remove_for_state_changes?(); end
-
-  def self.by_store(*args); end
-
-  def self.pending(*args); end
-
-  def self.ready(*args); end
-
-  def self.reverse_chronological(*args); end
-
-  def self.shipped(*args); end
-
-  def self.trackable(*args); end
-
-  def self.with_state(*args); end
 end
 
 class Spree::ShippingCalculator
   include ::Spree::ShippingCalculator::GeneratedAttributeMethods
   include ::Spree::ShippingCalculator::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingCalculator::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+end
+
+class Spree::ShippingCalculator::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingCalculator::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+end
+
+class Spree::ShippingCalculator::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingCalculator::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Calculator::GeneratedRelationMethods
+  include ::Spree::ShippingCalculator::GeneratedRelationMethods
+end
+
+class Spree::ShippingCalculator::ActiveRecord_Relation
 end
 
 module Spree::ShippingCalculator::GeneratedAssociationMethods
@@ -27286,6 +30084,13 @@ module Spree::ShippingCalculator::GeneratedAttributeMethods
 end
 
 module Spree::ShippingCalculator::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ShippingCalculator::GeneratedRelationMethods
+end
+
+module Spree::ShippingCalculator::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -27375,6 +30180,31 @@ class Spree::ShippingCategory
   def validate_associated_records_for_shipping_method_categories(*args); end
 
   def validate_associated_records_for_shipping_methods(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingCategory::GeneratedRelationMethods
+end
+
+class Spree::ShippingCategory::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingCategory::GeneratedRelationMethods
+end
+
+class Spree::ShippingCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingCategory::GeneratedRelationMethods
+end
+
+class Spree::ShippingCategory::ActiveRecord_Relation
 end
 
 module Spree::ShippingCategory::GeneratedAssociationMethods
@@ -27410,6 +30240,13 @@ module Spree::ShippingCategory::GeneratedAttributeMethods
 end
 
 module Spree::ShippingCategory::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ShippingCategory::GeneratedRelationMethods
+end
+
+module Spree::ShippingCategory::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -27850,6 +30687,31 @@ class Spree::ShippingMethod
   def validate_associated_records_for_stores(*args); end
 
   def validate_associated_records_for_zones(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingMethod::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethod::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethod::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingMethod::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethod::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethod::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingMethod::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethod::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethod::ActiveRecord_Relation
 end
 
 module Spree::ShippingMethod::GeneratedAssociationMethods
@@ -27975,6 +30837,22 @@ module Spree::ShippingMethod::GeneratedAttributeMethods
 end
 
 module Spree::ShippingMethod::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ShippingMethod::GeneratedRelationMethods
+  def available_to_store(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::ShippingMethod::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -28326,6 +31204,31 @@ class Spree::ShippingMethodCategory
   def autosave_associated_records_for_shipping_category(*args); end
 
   def autosave_associated_records_for_shipping_method(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingMethodCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodCategory::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodCategory::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingMethodCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodCategory::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingMethodCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodCategory::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodCategory::ActiveRecord_Relation
 end
 
 module Spree::ShippingMethodCategory::GeneratedAssociationMethods
@@ -28364,12 +31267,44 @@ module Spree::ShippingMethodCategory::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ShippingMethodCategory::GeneratedRelationMethods
+end
+
+module Spree::ShippingMethodCategory::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ShippingMethodStockLocation
   include ::Spree::ShippingMethodStockLocation::GeneratedAttributeMethods
   include ::Spree::ShippingMethodStockLocation::GeneratedAssociationMethods
   def autosave_associated_records_for_shipping_method(*args); end
 
   def autosave_associated_records_for_stock_location(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingMethodStockLocation::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodStockLocation::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodStockLocation::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingMethodStockLocation::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodStockLocation::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodStockLocation::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingMethodStockLocation::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodStockLocation::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodStockLocation::ActiveRecord_Relation
 end
 
 module Spree::ShippingMethodStockLocation::GeneratedAssociationMethods
@@ -28408,12 +31343,44 @@ module Spree::ShippingMethodStockLocation::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ShippingMethodStockLocation::GeneratedRelationMethods
+end
+
+module Spree::ShippingMethodStockLocation::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ShippingMethodZone
   include ::Spree::ShippingMethodZone::GeneratedAttributeMethods
   include ::Spree::ShippingMethodZone::GeneratedAssociationMethods
   def autosave_associated_records_for_shipping_method(*args); end
 
   def autosave_associated_records_for_zone(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingMethodZone::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodZone::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodZone::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingMethodZone::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodZone::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodZone::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingMethodZone::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingMethodZone::GeneratedRelationMethods
+end
+
+class Spree::ShippingMethodZone::ActiveRecord_Relation
 end
 
 module Spree::ShippingMethodZone::GeneratedAssociationMethods
@@ -28449,6 +31416,13 @@ module Spree::ShippingMethodZone::GeneratedAttributeMethods
 end
 
 module Spree::ShippingMethodZone::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ShippingMethodZone::GeneratedRelationMethods
+end
+
+module Spree::ShippingMethodZone::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -28524,6 +31498,31 @@ class Spree::ShippingRate
   def validate_associated_records_for_taxes(*args); end
 
   def will_save_change_to_amount?(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingRate::GeneratedRelationMethods
+end
+
+class Spree::ShippingRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingRate::GeneratedRelationMethods
+end
+
+class Spree::ShippingRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingRate::GeneratedRelationMethods
+end
+
+class Spree::ShippingRate::ActiveRecord_Relation
 end
 
 module Spree::ShippingRate::GeneratedAssociationMethods
@@ -28570,6 +31569,13 @@ module Spree::ShippingRate::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ShippingRate::GeneratedRelationMethods
+end
+
+module Spree::ShippingRate::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::ShippingRate
   def self.after_add_for_taxes(); end
 
@@ -28604,6 +31610,31 @@ class Spree::ShippingRateTax
   def autosave_associated_records_for_tax_rate(*args); end
 
   def display_absolute_amount(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ShippingRateTax::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingRateTax::GeneratedRelationMethods
+end
+
+class Spree::ShippingRateTax::ActiveRecord_AssociationRelation
+end
+
+class Spree::ShippingRateTax::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingRateTax::GeneratedRelationMethods
+end
+
+class Spree::ShippingRateTax::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ShippingRateTax::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ShippingRateTax::GeneratedRelationMethods
+end
+
+class Spree::ShippingRateTax::ActiveRecord_Relation
 end
 
 module Spree::ShippingRateTax::GeneratedAssociationMethods
@@ -28642,6 +31673,13 @@ module Spree::ShippingRateTax::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::ShippingRateTax::GeneratedRelationMethods
+end
+
+module Spree::ShippingRateTax::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::State
   include ::Spree::State::GeneratedAttributeMethods
   include ::Spree::State::GeneratedAssociationMethods
@@ -28674,6 +31712,31 @@ class Spree::State
   def before_remove_for_addresses?(); end
 
   def validate_associated_records_for_addresses(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::State::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::State::GeneratedRelationMethods
+end
+
+class Spree::State::ActiveRecord_AssociationRelation
+end
+
+class Spree::State::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::State::GeneratedRelationMethods
+end
+
+class Spree::State::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::State::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::State::GeneratedRelationMethods
+end
+
+class Spree::State::ActiveRecord_Relation
 end
 
 module Spree::State::GeneratedAssociationMethods
@@ -28705,6 +31768,14 @@ module Spree::State::GeneratedAttributeMethods
 end
 
 module Spree::State::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::State::GeneratedRelationMethods
+  def with_name_or_abbr(*args, &block); end
+end
+
+module Spree::State::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -28742,6 +31813,31 @@ class Spree::StateChange
   def autosave_associated_records_for_stateful(*args); end
 
   def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StateChange::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StateChange::GeneratedRelationMethods
+end
+
+class Spree::StateChange::ActiveRecord_AssociationRelation
+end
+
+class Spree::StateChange::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StateChange::GeneratedRelationMethods
+end
+
+class Spree::StateChange::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StateChange::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StateChange::GeneratedRelationMethods
+end
+
+class Spree::StateChange::ActiveRecord_Relation
 end
 
 module Spree::StateChange::GeneratedAssociationMethods
@@ -28774,25 +31870,11 @@ module Spree::StateChange::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
-class Spree::Stock::Allocator::OnHandFirst
+module Spree::StateChange::GeneratedRelationMethods
 end
 
-class Spree::Stock::LocationFilter::Active
-end
-
-class Spree::Stock::LocationSorter::DefaultFirst
-end
-
-class Spree::Stock::LocationSorter::Unsorted
-end
-
-class Spree::Stock::Splitter::Backordered
-end
-
-class Spree::Stock::Splitter::ShippingCategory
-end
-
-class Spree::Stock::Splitter::Weight
+module Spree::StateChange::GeneratedRelationMethods
+  extend ::Mutex_m
 end
 
 class Spree::StockItem
@@ -28869,6 +31951,31 @@ class Spree::StockItem
   def really_destroyed?(); end
 
   def validate_associated_records_for_stock_movements(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StockItem::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockItem::GeneratedRelationMethods
+end
+
+class Spree::StockItem::ActiveRecord_AssociationRelation
+end
+
+class Spree::StockItem::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockItem::GeneratedRelationMethods
+end
+
+class Spree::StockItem::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StockItem::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockItem::GeneratedRelationMethods
+end
+
+class Spree::StockItem::ActiveRecord_Relation
 end
 
 module Spree::StockItem::GeneratedAssociationMethods
@@ -28912,6 +32019,20 @@ module Spree::StockItem::GeneratedAttributeMethods
 end
 
 module Spree::StockItem::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StockItem::GeneratedRelationMethods
+  def discarded(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::StockItem::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -29268,6 +32389,31 @@ class Spree::StockLocation
   def validate_associated_records_for_user_stock_locations(*args); end
 
   def validate_associated_records_for_users(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StockLocation::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockLocation::GeneratedRelationMethods
+end
+
+class Spree::StockLocation::ActiveRecord_AssociationRelation
+end
+
+class Spree::StockLocation::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockLocation::GeneratedRelationMethods
+end
+
+class Spree::StockLocation::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StockLocation::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockLocation::GeneratedRelationMethods
+end
+
+class Spree::StockLocation::ActiveRecord_Relation
 end
 
 module Spree::StockLocation::GeneratedAssociationMethods
@@ -29367,6 +32513,18 @@ module Spree::StockLocation::GeneratedAttributeMethods
 end
 
 module Spree::StockLocation::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StockLocation::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def in_list(*args, &block); end
+
+  def order_default(*args, &block); end
+end
+
+module Spree::StockLocation::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -29597,6 +32755,31 @@ class Spree::StockMovement
   def autosave_associated_records_for_stock_item(*args); end
 
   def autosave_associated_records_for_variant(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StockMovement::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockMovement::GeneratedRelationMethods
+end
+
+class Spree::StockMovement::ActiveRecord_AssociationRelation
+end
+
+class Spree::StockMovement::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockMovement::GeneratedRelationMethods
+end
+
+class Spree::StockMovement::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StockMovement::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StockMovement::GeneratedRelationMethods
+end
+
+class Spree::StockMovement::ActiveRecord_Relation
 end
 
 module Spree::StockMovement::GeneratedAssociationMethods
@@ -29632,6 +32815,14 @@ module Spree::StockMovement::GeneratedAttributeMethods
 end
 
 module Spree::StockMovement::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StockMovement::GeneratedRelationMethods
+  def recent(*args, &block); end
+end
+
+module Spree::StockMovement::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -29781,6 +32972,31 @@ class Spree::Store
   def validate_associated_records_for_store_payment_methods(*args); end
 
   def validate_associated_records_for_store_shipping_methods(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Store::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Store::GeneratedRelationMethods
+end
+
+class Spree::Store::ActiveRecord_AssociationRelation
+end
+
+class Spree::Store::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Store::GeneratedRelationMethods
+end
+
+class Spree::Store::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Store::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Store::GeneratedRelationMethods
+end
+
+class Spree::Store::ActiveRecord_Relation
 end
 
 module Spree::Store::GeneratedAssociationMethods
@@ -29832,6 +33048,14 @@ module Spree::Store::GeneratedAttributeMethods
 end
 
 module Spree::Store::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Store::GeneratedRelationMethods
+  def by_url(*args, &block); end
+end
+
+module Spree::Store::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30047,6 +33271,31 @@ class Spree::StoreCredit
   def really_destroyed?(); end
 
   def validate_associated_records_for_store_credit_events(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StoreCredit::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::StoreCredit::ActiveRecord_AssociationRelation
+end
+
+class Spree::StoreCredit::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::StoreCredit::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StoreCredit::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCredit::GeneratedRelationMethods
+end
+
+class Spree::StoreCredit::ActiveRecord_Relation
 end
 
 module Spree::StoreCredit::GeneratedAssociationMethods
@@ -30114,6 +33363,22 @@ module Spree::StoreCredit::GeneratedAttributeMethods
 end
 
 module Spree::StoreCredit::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StoreCredit::GeneratedRelationMethods
+  def discarded(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def order_by_priority(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::StoreCredit::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30221,6 +33486,31 @@ end
 class Spree::StoreCreditCategory
   include ::Spree::StoreCreditCategory::GeneratedAttributeMethods
   include ::Spree::StoreCreditCategory::GeneratedAssociationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StoreCreditCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditCategory::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditCategory::ActiveRecord_AssociationRelation
+end
+
+class Spree::StoreCreditCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditCategory::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StoreCreditCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditCategory::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditCategory::ActiveRecord_Relation
 end
 
 module Spree::StoreCreditCategory::GeneratedAssociationMethods
@@ -30233,6 +33523,13 @@ module Spree::StoreCreditCategory::GeneratedAttributeMethods
 end
 
 module Spree::StoreCreditCategory::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StoreCreditCategory::GeneratedRelationMethods
+end
+
+module Spree::StoreCreditCategory::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30284,6 +33581,31 @@ class Spree::StoreCreditEvent
   def really_delete(); end
 
   def really_destroyed?(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StoreCreditEvent::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditEvent::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditEvent::ActiveRecord_AssociationRelation
+end
+
+class Spree::StoreCreditEvent::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditEvent::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditEvent::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StoreCreditEvent::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditEvent::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditEvent::ActiveRecord_Relation
 end
 
 module Spree::StoreCreditEvent::GeneratedAssociationMethods
@@ -30325,6 +33647,30 @@ module Spree::StoreCreditEvent::GeneratedAttributeMethods
 end
 
 module Spree::StoreCreditEvent::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StoreCreditEvent::GeneratedRelationMethods
+  def chronological(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def exposable_actions(*args, &block); end
+
+  def exposed_events(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def not_invalidated(*args, &block); end
+
+  def reverse_chronological(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::StoreCreditEvent::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30443,6 +33789,31 @@ class Spree::StoreCreditReason
   def before_remove_for_store_credit_events?(); end
 
   def validate_associated_records_for_store_credit_events(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StoreCreditReason::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditReason::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditReason::ActiveRecord_AssociationRelation
+end
+
+class Spree::StoreCreditReason::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditReason::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditReason::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StoreCreditReason::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditReason::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditReason::ActiveRecord_Relation
 end
 
 module Spree::StoreCreditReason::GeneratedAssociationMethods
@@ -30462,6 +33833,14 @@ module Spree::StoreCreditReason::GeneratedAttributeMethods
 end
 
 module Spree::StoreCreditReason::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StoreCreditReason::GeneratedRelationMethods
+  def active(*args, &block); end
+end
+
+module Spree::StoreCreditReason::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30523,6 +33902,31 @@ class Spree::StoreCreditType
   def before_remove_for_store_credits?(); end
 
   def validate_associated_records_for_store_credits(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StoreCreditType::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditType::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditType::ActiveRecord_AssociationRelation
+end
+
+class Spree::StoreCreditType::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditType::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditType::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StoreCreditType::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreCreditType::GeneratedRelationMethods
+end
+
+class Spree::StoreCreditType::ActiveRecord_Relation
 end
 
 module Spree::StoreCreditType::GeneratedAssociationMethods
@@ -30542,6 +33946,13 @@ module Spree::StoreCreditType::GeneratedAttributeMethods
 end
 
 module Spree::StoreCreditType::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StoreCreditType::GeneratedRelationMethods
+end
+
+module Spree::StoreCreditType::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30577,6 +33988,31 @@ class Spree::StorePaymentMethod
   def autosave_associated_records_for_payment_method(*args); end
 
   def autosave_associated_records_for_store(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StorePaymentMethod::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StorePaymentMethod::GeneratedRelationMethods
+end
+
+class Spree::StorePaymentMethod::ActiveRecord_AssociationRelation
+end
+
+class Spree::StorePaymentMethod::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StorePaymentMethod::GeneratedRelationMethods
+end
+
+class Spree::StorePaymentMethod::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StorePaymentMethod::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StorePaymentMethod::GeneratedRelationMethods
+end
+
+class Spree::StorePaymentMethod::ActiveRecord_Relation
 end
 
 module Spree::StorePaymentMethod::GeneratedAssociationMethods
@@ -30615,12 +34051,44 @@ module Spree::StorePaymentMethod::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::StorePaymentMethod::GeneratedRelationMethods
+end
+
+module Spree::StorePaymentMethod::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::StoreShippingMethod
   include ::Spree::StoreShippingMethod::GeneratedAttributeMethods
   include ::Spree::StoreShippingMethod::GeneratedAssociationMethods
   def autosave_associated_records_for_shipping_method(*args); end
 
   def autosave_associated_records_for_store(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::StoreShippingMethod::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreShippingMethod::GeneratedRelationMethods
+end
+
+class Spree::StoreShippingMethod::ActiveRecord_AssociationRelation
+end
+
+class Spree::StoreShippingMethod::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreShippingMethod::GeneratedRelationMethods
+end
+
+class Spree::StoreShippingMethod::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::StoreShippingMethod::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::StoreShippingMethod::GeneratedRelationMethods
+end
+
+class Spree::StoreShippingMethod::ActiveRecord_Relation
 end
 
 module Spree::StoreShippingMethod::GeneratedAssociationMethods
@@ -30656,6 +34124,13 @@ module Spree::StoreShippingMethod::GeneratedAttributeMethods
 end
 
 module Spree::StoreShippingMethod::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::StoreShippingMethod::GeneratedRelationMethods
+end
+
+module Spree::StoreShippingMethod::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -30847,6 +34322,31 @@ class Spree::TaxCategory
   def validate_associated_records_for_tax_rate_tax_categories(*args); end
 
   def validate_associated_records_for_tax_rates(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::TaxCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxCategory::GeneratedRelationMethods
+end
+
+class Spree::TaxCategory::ActiveRecord_AssociationRelation
+end
+
+class Spree::TaxCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxCategory::GeneratedRelationMethods
+end
+
+class Spree::TaxCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::TaxCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxCategory::GeneratedRelationMethods
+end
+
+class Spree::TaxCategory::ActiveRecord_Relation
 end
 
 module Spree::TaxCategory::GeneratedAssociationMethods
@@ -30874,6 +34374,22 @@ module Spree::TaxCategory::GeneratedAttributeMethods
 end
 
 module Spree::TaxCategory::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::TaxCategory::GeneratedRelationMethods
+  def discarded(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def paranoia_scope(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::TaxCategory::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -31162,6 +34678,31 @@ class Spree::TaxRate
   def validate_associated_records_for_tax_categories(*args); end
 
   def validate_associated_records_for_tax_rate_tax_categories(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::TaxRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxRate::GeneratedRelationMethods
+end
+
+class Spree::TaxRate::ActiveRecord_AssociationRelation
+end
+
+class Spree::TaxRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxRate::GeneratedRelationMethods
+end
+
+class Spree::TaxRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::TaxRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxRate::GeneratedRelationMethods
+end
+
+class Spree::TaxRate::ActiveRecord_Relation
 end
 
 module Spree::TaxRate::GeneratedAssociationMethods
@@ -31231,6 +34772,30 @@ module Spree::TaxRate::GeneratedAttributeMethods
 end
 
 module Spree::TaxRate::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::TaxRate::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def for_address(*args, &block); end
+
+  def for_country(*args, &block); end
+
+  def for_zone(*args, &block); end
+
+  def included_in_price(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::TaxRate::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -31422,6 +34987,31 @@ class Spree::TaxRateTaxCategory
   def autosave_associated_records_for_tax_category(*args); end
 
   def autosave_associated_records_for_tax_rate(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::TaxRateTaxCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+class Spree::TaxRateTaxCategory::ActiveRecord_AssociationRelation
+end
+
+class Spree::TaxRateTaxCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+class Spree::TaxRateTaxCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::TaxRateTaxCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+class Spree::TaxRateTaxCategory::ActiveRecord_Relation
 end
 
 module Spree::TaxRateTaxCategory::GeneratedAssociationMethods
@@ -31460,6 +35050,13 @@ module Spree::TaxRateTaxCategory::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+module Spree::TaxRateTaxCategory::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::Taxon
   include ::Spree::Taxon::GeneratedAttributeMethods
   include ::Spree::Taxon::GeneratedAssociationMethods
@@ -31482,6 +35079,8 @@ class Spree::Taxon
   def _run_move_callbacks(&block); end
 
   def _run_post_process_callbacks(&block); end
+
+  def active_products(); end
 
   def acts_as_nested_set_options(); end
 
@@ -31548,6 +35147,12 @@ class Spree::Taxon
   def after_remove_for_promotion_rules=(val); end
 
   def after_remove_for_promotion_rules?(); end
+
+  def all_products(); end
+
+  def all_variants(); end
+
+  def applicable_filters(); end
 
   def arel_table(*args, &block); end
 
@@ -31625,6 +35230,8 @@ class Spree::Taxon
 
   def before_remove_for_promotion_rules?(); end
 
+  def child_index=(idx); end
+
   def depth=(x); end
 
   def icon(*args); end
@@ -31635,13 +35242,27 @@ class Spree::Taxon
 
   def lft=(x); end
 
+  def permalink_part(); end
+
+  def permalink_part=(value); end
+
+  def pretty_name(); end
+
   def quoted_table_name(*args, &block); end
 
   def rgt=(x); end
 
+  def seo_title(); end
+
+  def set_permalink(); end
+
   def skip_before_destroy(); end
 
   def skip_before_destroy=(skip_before_destroy); end
+
+  def update_child_permalinks(); end
+
+  def update_permalinks(); end
 
   def validate_associated_records_for_children(*args); end
 
@@ -31652,6 +35273,31 @@ class Spree::Taxon
   def validate_associated_records_for_promotion_rule_taxons(*args); end
 
   def validate_associated_records_for_promotion_rules(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Taxon::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Taxon::GeneratedRelationMethods
+end
+
+class Spree::Taxon::ActiveRecord_AssociationRelation
+end
+
+class Spree::Taxon::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Taxon::GeneratedRelationMethods
+end
+
+class Spree::Taxon::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Taxon::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Taxon::GeneratedRelationMethods
+end
+
+class Spree::Taxon::ActiveRecord_Relation
 end
 
 module Spree::Taxon::GeneratedAssociationMethods
@@ -31727,6 +35373,13 @@ module Spree::Taxon::GeneratedAttributeMethods
 end
 
 module Spree::Taxon::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Taxon::GeneratedRelationMethods
+end
+
+module Spree::Taxon::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -31937,6 +35590,31 @@ class Spree::Taxonomy
   def touch_record_sql(); end
 
   def validate_associated_records_for_taxons(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Taxonomy::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Taxonomy::GeneratedRelationMethods
+end
+
+class Spree::Taxonomy::ActiveRecord_AssociationRelation
+end
+
+class Spree::Taxonomy::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Taxonomy::GeneratedRelationMethods
+end
+
+class Spree::Taxonomy::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Taxonomy::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Taxonomy::GeneratedRelationMethods
+end
+
+class Spree::Taxonomy::ActiveRecord_Relation
 end
 
 module Spree::Taxonomy::GeneratedAssociationMethods
@@ -31968,6 +35646,14 @@ module Spree::Taxonomy::GeneratedAttributeMethods
 end
 
 module Spree::Taxonomy::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Taxonomy::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::Taxonomy::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -32018,9 +35704,6 @@ class Spree::Taxonomy
   def self.update_all_with_touch(updates); end
 end
 
-class Spree::TaxonsController
-end
-
 class Spree::TranslationHelperWrapper
   def debug_missing_translation(); end
 
@@ -32039,6 +35722,31 @@ class Spree::UnitCancel
   def autosave_associated_records_for_adjustment(); end
 
   def autosave_associated_records_for_inventory_unit(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::UnitCancel::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UnitCancel::GeneratedRelationMethods
+end
+
+class Spree::UnitCancel::ActiveRecord_AssociationRelation
+end
+
+class Spree::UnitCancel::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UnitCancel::GeneratedRelationMethods
+end
+
+class Spree::UnitCancel::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::UnitCancel::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UnitCancel::GeneratedRelationMethods
+end
+
+class Spree::UnitCancel::ActiveRecord_Relation
 end
 
 module Spree::UnitCancel::GeneratedAssociationMethods
@@ -32077,12 +35785,44 @@ module Spree::UnitCancel::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::UnitCancel::GeneratedRelationMethods
+end
+
+module Spree::UnitCancel::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::UserAddress
   include ::Spree::UserAddress::GeneratedAttributeMethods
   include ::Spree::UserAddress::GeneratedAssociationMethods
   def autosave_associated_records_for_address(*args); end
 
   def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::UserAddress::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UserAddress::GeneratedRelationMethods
+end
+
+class Spree::UserAddress::ActiveRecord_AssociationRelation
+end
+
+class Spree::UserAddress::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UserAddress::GeneratedRelationMethods
+end
+
+class Spree::UserAddress::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::UserAddress::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UserAddress::GeneratedRelationMethods
+end
+
+class Spree::UserAddress::ActiveRecord_Relation
 end
 
 module Spree::UserAddress::GeneratedAssociationMethods
@@ -32121,6 +35861,24 @@ module Spree::UserAddress::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::UserAddress::GeneratedRelationMethods
+  def active(*args, &block); end
+
+  def all_historical(*args, &block); end
+
+  def default(*args, &block); end
+
+  def default_billing(*args, &block); end
+
+  def default_shipping(*args, &block); end
+
+  def with_address_values(*args, &block); end
+end
+
+module Spree::UserAddress::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::UserAddress
   def self.active(*args); end
 
@@ -32152,6 +35910,31 @@ class Spree::UserStockLocation
   def autosave_associated_records_for_stock_location(*args); end
 
   def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::UserStockLocation::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UserStockLocation::GeneratedRelationMethods
+end
+
+class Spree::UserStockLocation::ActiveRecord_AssociationRelation
+end
+
+class Spree::UserStockLocation::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UserStockLocation::GeneratedRelationMethods
+end
+
+class Spree::UserStockLocation::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::UserStockLocation::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::UserStockLocation::GeneratedRelationMethods
+end
+
+class Spree::UserStockLocation::ActiveRecord_Relation
 end
 
 module Spree::UserStockLocation::GeneratedAssociationMethods
@@ -32187,6 +35970,13 @@ module Spree::UserStockLocation::GeneratedAttributeMethods
 end
 
 module Spree::UserStockLocation::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::UserStockLocation::GeneratedRelationMethods
+end
+
+module Spree::UserStockLocation::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -32574,6 +36364,31 @@ class Spree::Variant
   def validate_associated_records_for_stock_locations(*args); end
 
   def validate_associated_records_for_stock_movements(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Variant::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Variant::GeneratedRelationMethods
+end
+
+class Spree::Variant::ActiveRecord_AssociationRelation
+end
+
+class Spree::Variant::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Variant::GeneratedRelationMethods
+end
+
+class Spree::Variant::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Variant::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Variant::GeneratedRelationMethods
+end
+
+class Spree::Variant::ActiveRecord_Relation
 end
 
 module Spree::Variant::GeneratedAssociationMethods
@@ -32709,6 +36524,24 @@ module Spree::Variant::GeneratedAttributeMethods
 end
 
 module Spree::Variant::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Variant::GeneratedRelationMethods
+  def descend_by_popularity(*args, &block); end
+
+  def discarded(*args, &block); end
+
+  def in_list(*args, &block); end
+
+  def kept(*args, &block); end
+
+  def undiscarded(*args, &block); end
+
+  def with_discarded(*args, &block); end
+end
+
+module Spree::Variant::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -33194,6 +37027,31 @@ class Spree::VariantPropertyRule
   def validate_associated_records_for_properties(*args); end
 
   def validate_associated_records_for_values(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::VariantPropertyRule::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRule::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRule::ActiveRecord_AssociationRelation
+end
+
+class Spree::VariantPropertyRule::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRule::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRule::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::VariantPropertyRule::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRule::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRule::ActiveRecord_Relation
 end
 
 module Spree::VariantPropertyRule::GeneratedAssociationMethods
@@ -33251,6 +37109,13 @@ module Spree::VariantPropertyRule::GeneratedAttributeMethods
 end
 
 module Spree::VariantPropertyRule::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::VariantPropertyRule::GeneratedRelationMethods
+end
+
+module Spree::VariantPropertyRule::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -33358,6 +37223,31 @@ class Spree::VariantPropertyRuleCondition
   def autosave_associated_records_for_option_value(*args); end
 
   def autosave_associated_records_for_variant_property_rule(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::VariantPropertyRuleCondition::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRuleCondition::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRuleCondition::ActiveRecord_AssociationRelation
+end
+
+class Spree::VariantPropertyRuleCondition::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRuleCondition::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRuleCondition::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::VariantPropertyRuleCondition::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRuleCondition::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRuleCondition::ActiveRecord_Relation
 end
 
 module Spree::VariantPropertyRuleCondition::GeneratedAssociationMethods
@@ -33396,6 +37286,13 @@ module Spree::VariantPropertyRuleCondition::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::VariantPropertyRuleCondition::GeneratedRelationMethods
+end
+
+module Spree::VariantPropertyRuleCondition::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::VariantPropertyRuleValue
   include ::Spree::VariantPropertyRuleValue::GeneratedAttributeMethods
   include ::Spree::VariantPropertyRuleValue::GeneratedAssociationMethods
@@ -33427,6 +37324,31 @@ class Spree::VariantPropertyRuleValue
   def scope_name(); end
 
   def touch_record_sql(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::VariantPropertyRuleValue::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRuleValue::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRuleValue::ActiveRecord_AssociationRelation
+end
+
+class Spree::VariantPropertyRuleValue::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRuleValue::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRuleValue::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::VariantPropertyRuleValue::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::VariantPropertyRuleValue::GeneratedRelationMethods
+end
+
+class Spree::VariantPropertyRuleValue::ActiveRecord_Relation
 end
 
 module Spree::VariantPropertyRuleValue::GeneratedAssociationMethods
@@ -33465,6 +37387,14 @@ module Spree::VariantPropertyRuleValue::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module Spree::VariantPropertyRuleValue::GeneratedRelationMethods
+  def in_list(*args, &block); end
+end
+
+module Spree::VariantPropertyRuleValue::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class Spree::VariantPropertyRuleValue
   extend ::ActiveRecord::Acts::List::NoUpdate::ClassMethods
   def self.acts_as_list_top(); end
@@ -33494,6 +37424,31 @@ class Spree::WalletPaymentSource
   def autosave_associated_records_for_payment_source(*args); end
 
   def autosave_associated_records_for_user(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::WalletPaymentSource::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::WalletPaymentSource::GeneratedRelationMethods
+end
+
+class Spree::WalletPaymentSource::ActiveRecord_AssociationRelation
+end
+
+class Spree::WalletPaymentSource::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::WalletPaymentSource::GeneratedRelationMethods
+end
+
+class Spree::WalletPaymentSource::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::WalletPaymentSource::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::WalletPaymentSource::GeneratedRelationMethods
+end
+
+class Spree::WalletPaymentSource::ActiveRecord_Relation
 end
 
 module Spree::WalletPaymentSource::GeneratedAssociationMethods
@@ -33523,6 +37478,13 @@ module Spree::WalletPaymentSource::GeneratedAttributeMethods
 end
 
 module Spree::WalletPaymentSource::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::WalletPaymentSource::GeneratedRelationMethods
+end
+
+module Spree::WalletPaymentSource::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -33685,6 +37647,16 @@ class Spree::Zone
 
   def before_remove_for_zone_members?(); end
 
+  def country_list(); end
+
+  def include?(address); end
+
+  def kind(); end
+
+  def kind=(value); end
+
+  def members(); end
+
   def validate_associated_records_for_countries(*args); end
 
   def validate_associated_records_for_shipping_method_zones(*args); end
@@ -33696,6 +37668,33 @@ class Spree::Zone
   def validate_associated_records_for_tax_rates(*args); end
 
   def validate_associated_records_for_zone_members(*args); end
+
+  def zoneables(); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::Zone::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Zone::GeneratedRelationMethods
+end
+
+class Spree::Zone::ActiveRecord_AssociationRelation
+end
+
+class Spree::Zone::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Zone::GeneratedRelationMethods
+end
+
+class Spree::Zone::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::Zone::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::Zone::GeneratedRelationMethods
+end
+
+class Spree::Zone::ActiveRecord_Relation
 end
 
 module Spree::Zone::GeneratedAssociationMethods
@@ -33757,6 +37756,16 @@ module Spree::Zone::GeneratedAttributeMethods
 end
 
 module Spree::Zone::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::Zone::GeneratedRelationMethods
+  def for_address(*args, &block); end
+
+  def with_member_ids(*args, &block); end
+end
+
+module Spree::Zone::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -33908,6 +37917,8 @@ class Spree::Zone
   def self.for_address(*args); end
 
   def self.with_member_ids(*args); end
+
+  def self.with_shared_members(zone); end
 end
 
 class Spree::ZoneMember
@@ -33916,6 +37927,31 @@ class Spree::ZoneMember
   def autosave_associated_records_for_zone(*args); end
 
   def autosave_associated_records_for_zoneable(*args); end
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class Spree::ZoneMember::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ZoneMember::GeneratedRelationMethods
+end
+
+class Spree::ZoneMember::ActiveRecord_AssociationRelation
+end
+
+class Spree::ZoneMember::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ZoneMember::GeneratedRelationMethods
+end
+
+class Spree::ZoneMember::ActiveRecord_Associations_CollectionProxy
+end
+
+class Spree::ZoneMember::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::Spree::ZoneMember::GeneratedRelationMethods
+end
+
+class Spree::ZoneMember::ActiveRecord_Relation
 end
 
 module Spree::ZoneMember::GeneratedAssociationMethods
@@ -33945,6 +37981,13 @@ module Spree::ZoneMember::GeneratedAttributeMethods
 end
 
 module Spree::ZoneMember::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module Spree::ZoneMember::GeneratedRelationMethods
+end
+
+module Spree::ZoneMember::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -34278,6 +38321,15 @@ Struct::Group = Etc::Group
 Struct::Passwd = Etc::Passwd
 
 Struct::Tms = Process::Tms
+
+class TA
+  Elem = type_member
+end
+
+class TA
+  extend ::T::Private::Methods::MethodHooks
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
 
 module Teaspoon
   VERSION = ::T.let(nil, ::T.untyped)
@@ -34742,6 +38794,31 @@ class TransformTaxRateCategoryRelation::TaxRate
   include ::TransformTaxRateCategoryRelation::TaxRate::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class TransformTaxRateCategoryRelation::TaxRate::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::TransformTaxRateCategoryRelation::TaxRate::GeneratedRelationMethods
+end
+
+class TransformTaxRateCategoryRelation::TaxRate::ActiveRecord_AssociationRelation
+end
+
+class TransformTaxRateCategoryRelation::TaxRate::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::TransformTaxRateCategoryRelation::TaxRate::GeneratedRelationMethods
+end
+
+class TransformTaxRateCategoryRelation::TaxRate::ActiveRecord_Associations_CollectionProxy
+end
+
+class TransformTaxRateCategoryRelation::TaxRate::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::TransformTaxRateCategoryRelation::TaxRate::GeneratedRelationMethods
+end
+
+class TransformTaxRateCategoryRelation::TaxRate::ActiveRecord_Relation
 end
 
 module TransformTaxRateCategoryRelation::TaxRate::GeneratedAssociationMethods
@@ -34757,6 +38834,13 @@ module TransformTaxRateCategoryRelation::TaxRate::GeneratedAttributeMethods
   extend ::Mutex_m
 end
 
+module TransformTaxRateCategoryRelation::TaxRate::GeneratedRelationMethods
+end
+
+module TransformTaxRateCategoryRelation::TaxRate::GeneratedRelationMethods
+  extend ::Mutex_m
+end
+
 class TransformTaxRateCategoryRelation::TaxRate
   extend ::Kaminari::ConfigurationMethods::ClassMethods
   def self.page(num=T.unsafe(nil)); end
@@ -34767,6 +38851,31 @@ class TransformTaxRateCategoryRelation::TaxRateTaxCategory
   include ::TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedAssociationMethods
   include ::Kaminari::ActiveRecordModelExtension
   include ::Kaminari::ConfigurationMethods
+  RelationType = ::T.let(nil, ::T.untyped)
+end
+
+class TransformTaxRateCategoryRelation::TaxRateTaxCategory::ActiveRecord_AssociationRelation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+class TransformTaxRateCategoryRelation::TaxRateTaxCategory::ActiveRecord_AssociationRelation
+end
+
+class TransformTaxRateCategoryRelation::TaxRateTaxCategory::ActiveRecord_Associations_CollectionProxy
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+class TransformTaxRateCategoryRelation::TaxRateTaxCategory::ActiveRecord_Associations_CollectionProxy
+end
+
+class TransformTaxRateCategoryRelation::TaxRateTaxCategory::ActiveRecord_Relation
+  include ::ActiveRecord::Delegation::ClassSpecificRelation
+  include ::TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+class TransformTaxRateCategoryRelation::TaxRateTaxCategory::ActiveRecord_Relation
 end
 
 module TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedAssociationMethods
@@ -34779,6 +38888,13 @@ module TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedAttributeM
 end
 
 module TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedAttributeMethods
+  extend ::Mutex_m
+end
+
+module TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedRelationMethods
+end
+
+module TransformTaxRateCategoryRelation::TaxRateTaxCategory::GeneratedRelationMethods
   extend ::Mutex_m
 end
 
@@ -34798,6 +38914,14 @@ end
 class TruncateHtml::HtmlString
   REGEX = ::T.let(nil, ::T.untyped)
   UNPAIRED_TAGS = ::T.let(nil, ::T.untyped)
+end
+
+module TypeCoerce::Configuration
+  extend ::T::Private::Methods::SingletonMethodHooks
+end
+
+class TypeCoerce::Converter
+  PRIMITIVE_TYPES = ::T.let(nil, ::T.untyped)
 end
 
 module URI
@@ -38562,9 +42686,6 @@ end
 
 module Zip::NullInputStream
   include ::ActiveSupport::ToJsonWithActiveSupportEncoder
-end
-
-class Zip::StreamableStream
 end
 
 Zip::ZipCompressionMethodError = Zip::CompressionMethodError

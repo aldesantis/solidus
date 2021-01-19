@@ -1,4 +1,4 @@
-# typed: false
+# typed: true
 # frozen_string_literal: true
 
 class RenameApiKeyToSpreeApiKey < ActiveRecord::Migration[4.2]

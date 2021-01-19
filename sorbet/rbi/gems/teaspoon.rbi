@@ -331,9 +331,9 @@ class Teaspoon::Engine < Rails::Engine
   def self.inject_instrumentation; end
   def self.prepend_routes(app); end
 end
-module Anonymous_Module_33
+module Anonymous_Module_35
 end
-module Anonymous_Module_34
+module Anonymous_Module_36
 end
 module Teaspoon::Engine::ExceptionHandling
   def self.add_rails_handling; end
@@ -392,9 +392,9 @@ class Teaspoon::SuiteController < ActionController::Base
   def self.middleware_stack; end
   def show; end
   include ActionDispatch::Routing::UrlFor
-  include Anonymous_Module_35
+  include Anonymous_Module_37
 end
-module Anonymous_Module_35
+module Anonymous_Module_37
   def _generate_paths_by_default; end
   def _routes; end
   def self._routes; end
@@ -406,11 +406,11 @@ module Anonymous_Module_35
   def self.url_for(options); end
   def self.url_options; end
   extend ActiveSupport::Concern
-  extend Anonymous_Module_33
-  extend Anonymous_Module_34
+  extend Anonymous_Module_35
+  extend Anonymous_Module_36
   include ActionDispatch::Routing::UrlFor
-  include Anonymous_Module_33
-  include Anonymous_Module_34
+  include Anonymous_Module_35
+  include Anonymous_Module_36
 end
 class Teaspoon::Driver::Base
 end
